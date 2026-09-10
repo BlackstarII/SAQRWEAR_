@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
+  <!-- Anti-MitM & Strict Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; upgrade-insecure-requests;"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <title>SAQR&reg; — WEAR THE LEGACY | Mobile Edition</title>
+  
+  <!-- SEO & OpenGraph for Instagram Bio / Mobile Sharing -->
+  <meta name="description" content="SAQR&reg; — Cairo dark luxury streetwear label. Heavyweight boucl&eacute; hoodies &amp; tactical cargos. Drop 01 available now."/>
+  <meta name="theme-color" content="#ffffff" id="metaThemeColor"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="SAQR&reg; — WEAR THE LEGACY"/>
+  <meta property="og:description" content="Cairo dark luxury streetwear label. Est. 2026."/>
+  <meta property="og:image" content="images/product6.jpg"/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg"/>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+
+  <!-- Auto-redirect to Desktop version if user opens on a large screen -->
+  <script>
+    (function() {
+      const isDesktop = window.innerWidth > 900 && !/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const urlParams = new URLSearchParams(window.location.search);
+      if (isDesktop && !urlParams.has('forceMobile')) {
+        window.location.replace('index.html');
+      }
+    })();
+  </script>
+
+  <style>
+/* ═══════════════════════════════════════════════════════════════
+   SAQR® — DEDICATED MOBILE STYLESHEET
+   App-like Ergonomics + Touch Optimized + Light & Dark Mode
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg-dark: #060606;
+  --bg-card: #0f0f0f;
+  --bg-elevated: #161616;
+  --border: #222222;
+  --border-light: #333333;
+  --text-main: #f5f5f5;
+  --text-muted: #8e8e8e;
+  --navbar-bg: rgba(6, 6, 6, 0.94);
+  --modal-bg: #0f0f0f;
+  --modal-box: #080808;
+  --btn-main-bg: #ffffff;
+  --btn-main-color: #000000;
+  --active-bg: #ffffff;
+  --active-color: #000000;
+  --font-en: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --transition: 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+[data-theme="light"] {
+  --bg-dark: #fbfbfb;
+  --bg-card: #ffffff;
+  --bg-elevated: #f2f2f2;
+  --border: #e2e2e2;
+  --border-light: #cccccc;
+  --text-main: #111111;
+  --text-muted: #666666;
+  --navbar-bg: rgba(251, 251, 251, 0.96);
+  --modal-bg: #ffffff;
+  --modal-box: #f4f4f4;
+  --btn-main-bg: #111111;
+  --btn-main-color: #ffffff;
+  --active-bg: #111111;
+  --active-color: #ffffff;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-en);
+  direction: ltr;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+  background-color: var(--bg-dark);
+  min-height: 100vh;
+  padding-bottom: 70px; /* Space for bottom sticky bar */
+}
+
+/* Fast Preloader */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-dark);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-inner { text-align: center; width: 80%; max-width: 220px; }
+.loader-logo { width: 110px; height: auto; margin-bottom: 1.5rem; }
+.loader-bar { width: 100%; height: 2px; background: var(--border); overflow: hidden; margin-bottom: 0.6rem; }
+.loader-fill { width: 0%; height: 100%; background: var(--text-main); transition: width 0.1s ease-out; }
+.loader-text { font-size: 0.65rem; letter-spacing: 0.25em; color: var(--text-muted); }
+
+/* Mobile Top Navbar */
+.m-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.2rem;
+}
+.m-nav-logo img { height: 28px; width: auto; display: block; }
+.m-nav-actions { display: flex; align-items: center; gap: 0.6rem; }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  padding: 0.4rem 0.75rem;
+  font-family: var(--font-en);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 20px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* Mobile Hero Section */
+.hero {
+  min-height: 90vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 1.2rem 3rem;
+  overflow: hidden;
+}
+.hero-media { position: absolute; inset: 0; z-index: 1; }
+.hero-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.38) contrast(1.1); }
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--bg-dark) 0%, transparent 40%),
+              linear-gradient(to bottom, var(--bg-dark) 0%, transparent 25%);
+}
+.hero-content { position: relative; z-index: 2; width: 100%; max-width: 400px; }
+.hero-sub { font-size: 0.68rem; letter-spacing: 0.3em; color: #aaa; margin-bottom: 0.8rem; }
+.hero-heading {
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.hero-word--outline { -webkit-text-stroke: 1.5px #fff; color: transparent; }
+.hero-tagline { font-size: 0.85rem; color: #bbb; line-height: 1.5; margin-bottom: 1.8rem; }
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  background: #ffffff;
+  color: #000000;
+  width: 100%;
+  padding: 1rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  border-radius: 2px;
+  box-shadow: 0 8px 25px rgba(255,255,255,0.25);
+  touch-action: manipulation;
+}
+
+/* High-Visibility Mobile Hero Scroll Indicator */
+.hero-scroll {
+  position: relative;
+  margin-top: 2rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #000000;
+  color: #ffffff !important;
+  border: 2px solid #ffffff;
+  padding: 0.65rem 1.4rem;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.2);
+  touch-action: manipulation;
+  animation: scrollPulse 2.5s infinite ease-in-out;
+}
+[data-theme="light"] .hero-scroll {
+  background: #ffffff;
+  color: #000000 !important;
+  border: 2px solid #000000;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.hero-scroll span {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: #ffffff !important;
+}
+[data-theme="light"] .hero-scroll span { color: #000000 !important; }
+.hero-scroll-mouse {
+  width: 14px;
+  height: 22px;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+[data-theme="light"] .hero-scroll-mouse { border-color: #000000; }
+.hero-scroll-wheel {
+  width: 2.5px;
+  height: 5px;
+  background: #ffffff;
+  border-radius: 2px;
+  margin-top: 3px;
+  animation: mouseWheel 1.5s infinite ease-in-out;
+}
+[data-theme="light"] .hero-scroll-wheel { background: #000000; }
+.hero-scroll-arrow { font-size: 0.85rem; font-weight: 900; color: #ffffff !important; }
+[data-theme="light"] .hero-scroll-arrow { color: #000000 !important; }
+
+@keyframes scrollPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+@keyframes mouseWheel {
+  0% { transform: translateY(0); opacity: 1; }
+  60% { transform: translateY(6px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+/* Marquee */
+.marquee {
+  overflow: hidden;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+}
+.marquee-track {
+  display: flex;
+  gap: 2rem;
+  white-space: nowrap;
+  animation: marquee 22s linear infinite;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+.mx { color: var(--text-main); }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* Section Titles */
+.sec-header { text-align: center; margin: 3.5rem 1rem 2rem; }
+.sec-eye { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.25em; color: var(--text-muted); margin-bottom: 0.3rem; }
+.sec-title { font-size: 2rem; font-weight: 900; letter-spacing: 0.04em; color: var(--text-main); margin-bottom: 0.4rem; }
+.sec-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+/* Products Mobile Stack */
+.products-stack {
+  padding: 0 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.m-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.m-card__badge {
+  position: absolute;
+  top: 0.8rem; left: 0.8rem;
+  background: var(--btn-main-bg);
+  color: var(--btn-main-color);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  padding: 0.3rem 0.65rem;
+  z-index: 5;
+}
+.m-card__media {
+  aspect-ratio: 4/5;
+  background: #000;
+  position: relative;
+}
+.m-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.m-card__info { padding: 1.4rem; display: flex; flex-direction: column; }
+.m-card__tag { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--text-muted); font-weight: 700; margin-bottom: 0.3rem; }
+.m-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.4rem; }
+.m-card__desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.2rem; }
+.m-card__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--border);
+  margin-bottom: 1.2rem;
+}
+.m-card__price { font-size: 1.25rem; font-weight: 900; color: var(--text-main); }
+.m-card__sizes-hint { font-size: 0.65rem; color: var(--text-muted); font-weight: 600; }
+.m-card__btn {
+  width: 100%;
+  padding: 0.95rem;
+  background: var(--btn-main-bg);
+  color: var(--btn-main-color);
+  border: none;
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* Lookbook Horizontal Scroll */
+.m-lookbook {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0 1.2rem 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.m-lookbook__item {
+  flex: 0 0 80%;
+  scroll-snap-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  aspect-ratio: 3/4;
+  position: relative;
+  overflow: hidden;
+}
+.m-lookbook__item img { width: 100%; height: 100%; object-fit: cover; }
+.m-lookbook__caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 0.8rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* Size Guide Mobile Cards */
+.m-sg-wrap { padding: 0 1.2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.m-sg-card { background: var(--bg-card); border: 1px solid var(--border); padding: 1.4rem; }
+.m-sg-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-main); }
+.size-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 0.75rem; }
+.size-table th { padding: 0.6rem; background: var(--bg-elevated); color: var(--text-main); font-weight: 700; border: 1px solid var(--border); }
+.size-table td { padding: 0.6rem; border: 1px solid var(--border); color: var(--text-muted); }
+
+/* About & Story */
+.m-story { padding: 3rem 1.2rem; background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 3rem 0; }
+.m-story h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 1rem; color: var(--text-main); }
+.m-story p { font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 1rem; }
+.m-story__tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.2rem 0; }
+.m-story__tags span { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; padding: 0.35rem 0.7rem; background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text-muted); }
+
+/* Features 2x2 Grid */
+.m-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 0 1.2rem; }
+.m-feat { background: var(--bg-card); border: 1px solid var(--border); padding: 1.2rem; text-align: center; }
+.m-feat__icon { font-size: 1.3rem; margin-bottom: 0.4rem; display: block; color: var(--text-main); }
+.m-feat h4 { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; color: var(--text-main); margin-bottom: 0.3rem; }
+.m-feat p { font-size: 0.7rem; color: var(--text-muted); }
+
+/* Contact Mobile */
+.m-contact { padding: 3rem 1.2rem; text-align: center; }
+.m-channel { display: flex; flex-direction: column; gap: 0.4rem; background: var(--bg-card); border: 1px solid var(--border); padding: 1.5rem; text-decoration: none; margin-bottom: 1rem; }
+.m-channel span:first-child { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.18em; color: var(--text-muted); }
+.m-channel span:last-child { font-size: 1rem; font-weight: 700; color: var(--text-main); }
+
+/* Sticky Mobile Bottom Bar */
+.m-bottom-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 62px;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.2rem;
+}
+.m-bottom-bar a { text-decoration: none; }
+.m-bottom-info { display: flex; flex-direction: column; }
+.m-bottom-tag { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--text-muted); font-weight: 700; }
+.m-bottom-brand { font-size: 0.95rem; font-weight: 900; color: var(--text-main); letter-spacing: 0.05em; }
+.m-bottom-btn {
+  background: var(--btn-main-bg);
+  color: var(--btn-main-color);
+  padding: 0.75rem 1.4rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  border-radius: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE MODAL (Full-Screen Ergonomic Bottom Sheet)
+   ═══════════════════════════════════════════════════════════════ */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.modal[hidden] { display: none; }
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+.modal__panel {
+  position: relative;
+  z-index: 2;
+  background: var(--modal-bg);
+  border-top: 2px solid var(--border-light);
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+  border-radius: 12px 12px 0 0;
+}
+.modal__close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  border-radius: 50%;
+}
+.modal__steps { display: flex; align-items: center; justify-content: center; gap: 0.8rem; margin-bottom: 1.5rem; }
+.step-dot {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 700; color: var(--text-muted);
+}
+.step-dot.active { background: var(--active-bg); color: var(--active-color); border-color: var(--active-bg); }
+.step-line { width: 30px; height: 1px; background: var(--border-light); }
+
+.modal__media {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: #000;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+  border-radius: 2px;
+}
+.modal__media img { width: 100%; height: 100%; object-fit: cover; }
+.modal__view-switcher {
+  position: absolute;
+  bottom: 0.6rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 0.4rem;
+  background: rgba(0,0,0,0.85);
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+}
+.modal__view-btn {
+  background: transparent; border: none;
+  color: #888; font-size: 0.6rem; font-weight: 700;
+  padding: 0.2rem 0.5rem; border-radius: 10px;
+}
+.modal__view-btn.active { background: #ffffff; color: #000000; }
+
+.modal__tag { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--text-muted); font-weight: 700; margin-bottom: 0.2rem; }
+.modal__title { font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.4rem; }
+.modal__desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.8rem; }
+.modal__price { font-size: 1.25rem; font-weight: 900; color: var(--text-main); margin-bottom: 1.2rem; }
+
+/* Size Chart Drawer */
+.size-chart-wrap { margin-bottom: 1.2rem; }
+.size-chart-toggle {
+  width: 100%;
+  background: var(--modal-box);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  padding: 0.7rem;
+  font-family: var(--font-en);
+  font-size: 0.68rem;
+  font-weight: 700;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.size-chart-drawer { background: var(--modal-box); border: 1px solid var(--border); border-top: none; padding: 0.8rem; }
+.size-chart-tabs { display: flex; gap: 0.4rem; margin-bottom: 0.6rem; }
+.sc-tab {
+  flex: 1; padding: 0.4rem;
+  background: var(--bg-card); border: 1px solid var(--border);
+  color: var(--text-muted); font-size: 0.62rem; font-weight: 700;
+}
+.sc-tab.active { background: var(--text-main); color: var(--bg-dark); border-color: var(--text-main); }
+
+/* Size Groups */
+.size-group { margin-bottom: 1rem; background: var(--modal-box); padding: 0.8rem; border: 1px solid var(--border); }
+.size-group__title { font-size: 0.7rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; text-transform: uppercase; }
+.size-grid { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.size-btn {
+  min-width: 42px; height: 36px; padding: 0 0.6rem;
+  background: var(--bg-card); border: 1px solid var(--border-light);
+  color: var(--text-main); font-weight: 600; font-size: 0.75rem;
+}
+.size-btn.active {
+  background: var(--active-bg) !important;
+  color: var(--active-color) !important;
+  border-color: var(--active-bg) !important;
+  font-weight: 800;
+}
+
+.modal__field { margin-bottom: 1.2rem; }
+.field-label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; color: var(--text-main); margin-bottom: 0.4rem; text-transform: uppercase; }
+.qty-ctrl { display: inline-flex; align-items: center; background: var(--modal-box); border: 1px solid var(--border-light); }
+.qty-btn { width: 34px; height: 34px; background: transparent; border: none; color: var(--text-main); font-size: 1.1rem; }
+.qty-val { padding: 0 0.8rem; font-weight: 700; font-size: 0.82rem; color: var(--text-main); }
+
+.btn-next {
+  width: 100%; padding: 1rem;
+  background: var(--btn-main-bg); color: var(--btn-main-color);
+  border: none; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em;
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+}
+
+/* Modal Step 2 Form */
+.modal__order-summary { background: var(--modal-box); border: 1px solid var(--border); padding: 1.2rem; margin-bottom: 1.2rem; }
+.summary-item { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.6rem; }
+.summary-item.total { border-top: 1px solid var(--border); padding-top: 0.8rem; margin-top: 0.8rem; font-size: 1rem; font-weight: 800; color: var(--text-main); }
+
+.form-field { margin-bottom: 0.9rem; }
+.form-field label { display: block; font-size: 0.68rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.3rem; text-transform: uppercase; }
+.form-field input {
+  width: 100%; padding: 0.8rem;
+  background: var(--modal-box); border: 1px solid var(--border-light);
+  color: var(--text-main); font-size: 0.82rem; border-radius: 2px; outline: none;
+}
+.form-field input:focus { border-color: var(--text-main); }
+
+.pay-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.pay-btn {
+  display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+  padding: 0.75rem; background: var(--modal-box); border: 1px solid var(--border-light);
+  color: var(--text-muted); font-size: 0.68rem; font-weight: 700;
+}
+.pay-btn.active {
+  background: var(--active-bg) !important;
+  color: var(--active-color) !important;
+  border-color: var(--active-bg) !important;
+}
+
+.instapay-box {
+  background: rgba(196, 167, 104, 0.08);
+  border: 1px dashed #c4a768;
+  padding: 1rem; margin-top: 0.8rem;
+}
+.instapay-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
+.instapay-badge { font-size: 0.6rem; font-weight: 800; color: #c4a768; }
+.instapay-acc { font-size: 1rem; font-weight: 900; color: #c4a768; }
+.instapay-note { font-size: 0.72rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 0.6rem; }
+.instapay-copy-btn {
+  width: 100%; padding: 0.6rem;
+  background: transparent; border: 1px solid rgba(196, 167, 104, 0.4);
+  color: #c4a768; font-size: 0.68rem; font-weight: 700;
+}
+
+.modal__actions { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
+.btn-back {
+  padding: 0.9rem 1.2rem; background: transparent;
+  color: var(--text-muted); border: 1px solid var(--border-light);
+  font-size: 0.72rem; font-weight: 600;
+}
+.btn-send {
+  flex-grow: 1; padding: 0.9rem;
+  background: #25D366; color: #000000; border: none;
+  font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em;
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+}
+  </style>
+</head>
+<body>
+
+<!-- ══ PRELOADER ══ -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <img src="images/logo.jpg" alt="SAQR&reg;" class="loader-logo"/>
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+    <p class="loader-text" id="loaderText">LOADING 0%</p>
+  </div>
+</div>
+
+<!-- ══ TOP NAVBAR ══ -->
+<header class="m-nav">
+  <a href="#" class="m-nav-logo">
+    <img src="images/logo.jpg" alt="SAQR&reg; Logo"/>
+  </a>
+  <div class="m-nav-actions">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle Theme">
+      <span class="theme-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+      <span class="theme-label">DARK</span>
+    </button>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="hero">
+  <div class="hero-media">
+    <img src="images/product6.jpg" alt="SAQR Editorial Shoot" class="hero-img"/>
+    <div class="hero-vignette"></div>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-sub">CAIRO, EGYPT — EST. 2026</p>
+    <h1 class="hero-heading">
+      <span>WEAR</span><br/>
+      <span class="hero-word--outline">THE</span><br/>
+      <span>LEGACY</span>
+    </h1>
+    <p class="hero-tagline">Heavyweight boucl&eacute; silhouettes with custom metal hardware</p>
+    <a href="#collections" class="hero-cta">VIEW COLLECTION &darr;</a>
+    
+    <!-- High-visibility scroll indicator -->
+    <a href="#collections" class="hero-scroll" aria-label="Scroll to collection">
+      <span>SCROLL</span>
+      <div class="hero-scroll-mouse"><div class="hero-scroll-wheel"></div></div>
+      <span class="hero-scroll-arrow">&darr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ══ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>SAQR&reg;</span><span class="mx">&#9670;</span>
+    <span>WEAR THE LEGACY</span><span class="mx">&#9670;</span>
+    <span>BOUCL&Eacute; HOODIES &amp; CARGOS</span><span class="mx">&#9670;</span>
+    <span>CUSTOM METAL HARDWARE</span><span class="mx">&#9670;</span>
+    <span>MADE IN EGYPT</span><span class="mx">&#9670;</span>
+    <span>EST. 2026</span><span class="mx">&#9670;</span>
+  </div>
+</div>
+
+<!-- ══ PRODUCTS ══ -->
+<section class="products-section" id="collections">
+  <div class="sec-header">
+    <p class="sec-eye">DROP 01</p>
+    <h2 class="sec-title">THE PIECES</h2>
+    <p class="sec-desc">Signature full set or individual pieces. Independent sizing for hoodie &amp; pants.</p>
+  </div>
+
+  <div class="products-stack">
+
+    <!-- 1. FULL SET -->
+    <article class="m-card js-card" data-product="fullset">
+      <div class="m-card__badge">FULL SET</div>
+      <div class="m-card__media">
+        <img src="images/product2.jpg" alt="SAQR Full Set" loading="lazy"/>
+      </div>
+      <div class="m-card__info">
+        <span class="m-card__tag">HOODIE + CARGO PANTS</span>
+        <h3>THE SIGNATURE FULL SET</h3>
+        <p class="m-card__desc">Plush boucl&eacute; oversized hoodie + heavyweight tactical cargo pants with strap system.</p>
+        <div class="m-card__bottom">
+          <p class="m-card__price">2,100 EGP</p>
+          <span class="m-card__sizes-hint">Choose Hoodie + Pants Sizes</span>
+        </div>
+        <button class="m-card__btn" type="button" data-product="fullset">ORDER FULL SET (2,100 EGP)</button>
+      </div>
+    </article>
+
+    <!-- 2. HOODIE -->
+    <article class="m-card js-card" data-product="hoodie">
+      <div class="m-card__media">
+        <img src="images/hoodie_flatlay.jpg" alt="Oversized Hoodie" loading="lazy"/>
+      </div>
+      <div class="m-card__info">
+        <span class="m-card__tag">INDIVIDUAL PIECE</span>
+        <h3>THE OVERSIZED HOODIE</h3>
+        <p class="m-card__desc">Heavy plush boucl&eacute; texture, bronze zipper, relaxed drop-shoulder cut &amp; double hood.</p>
+        <div class="m-card__bottom">
+          <p class="m-card__price">900 EGP</p>
+          <span class="m-card__sizes-hint">Sizes S to XXL</span>
+        </div>
+        <button class="m-card__btn" type="button" data-product="hoodie">ORDER HOODIE (900 EGP)</button>
+      </div>
+    </article>
+
+    <!-- 3. CARGO -->
+    <article class="m-card js-card" data-product="cargo">
+      <div class="m-card__media">
+        <img src="images/cargo_flatlay.jpg" alt="Cargo Pants" loading="lazy"/>
+      </div>
+      <div class="m-card__info">
+        <span class="m-card__tag">INDIVIDUAL PIECE</span>
+        <h3>THE CARGO PANTS</h3>
+        <p class="m-card__desc">Heavy boucl&eacute; cargo with adjustable strap system, bronze clips &amp; side tactical pockets.</p>
+        <div class="m-card__bottom">
+          <p class="m-card__price">1,200 EGP</p>
+          <span class="m-card__sizes-hint">Sizes S to XXL</span>
+        </div>
+        <button class="m-card__btn" type="button" data-product="cargo">ORDER CARGO (1,200 EGP)</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ══ LOOKBOOK ══ -->
+<div class="sec-header" style="margin-top:4rem;">
+  <p class="sec-eye">EDITORIAL ARCHIVE</p>
+  <h2 class="sec-title">LOOKBOOK</h2>
+  <p class="sec-desc">Swipe to explore different angles</p>
+</div>
+
+<div class="m-lookbook">
+  <div class="m-lookbook__item">
+    <img src="images/product4.png" alt="Angle 01" loading="lazy"/>
+    <div class="m-lookbook__caption">ANGLE 01 // BACK TO BACK DUO</div>
+  </div>
+  <div class="m-lookbook__item">
+    <img src="images/product2.jpg" alt="Angle 02" loading="lazy"/>
+    <div class="m-lookbook__caption">ANGLE 02 // STUDIO CONTRAST</div>
+  </div>
+  <div class="m-lookbook__item">
+    <img src="images/product1.jpg" alt="Angle 03" loading="lazy"/>
+    <div class="m-lookbook__caption">ANGLE 03 // DARK SILHOUETTE</div>
+  </div>
+  <div class="m-lookbook__item">
+    <img src="images/product7.jpg" alt="Angle 04" loading="lazy"/>
+    <div class="m-lookbook__caption">ANGLE 04 // STUDIO LEAN</div>
+  </div>
+</div>
+
+<!-- ══ SIZE GUIDE ══ -->
+<div class="sec-header" style="margin-top:4rem;">
+  <p class="sec-eye">FIT &amp; MEASUREMENTS</p>
+  <h2 class="sec-title">SIZE GUIDE</h2>
+  <p class="sec-desc">All measurements in centimeters (cm)</p>
+</div>
+
+<div class="m-sg-wrap">
+  <div class="m-sg-card">
+    <h3>OVERSIZED HOODIE</h3>
+    <table class="size-table">
+      <thead><tr><th>Size</th><th>Chest</th><th>Length</th><th>Weight</th></tr></thead>
+      <tbody>
+        <tr><td><strong>S</strong></td><td>58 cm</td><td>70 cm</td><td>55 - 68 kg</td></tr>
+        <tr><td><strong>M</strong></td><td>61 cm</td><td>72 cm</td><td>68 - 78 kg</td></tr>
+        <tr><td><strong>L</strong></td><td>64 cm</td><td>74 cm</td><td>78 - 88 kg</td></tr>
+        <tr><td><strong>XL</strong></td><td>67 cm</td><td>76 cm</td><td>88 - 98 kg</td></tr>
+        <tr><td><strong>XXL</strong></td><td>70 cm</td><td>78 cm</td><td>98 - 110 kg</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="m-sg-card">
+    <h3>CARGO PANTS</h3>
+    <table class="size-table">
+      <thead><tr><th>Size</th><th>Waist</th><th>Length</th><th>Weight</th></tr></thead>
+      <tbody>
+        <tr><td><strong>S</strong></td><td>74 - 80 cm</td><td>102 cm</td><td>55 - 68 kg</td></tr>
+        <tr><td><strong>M</strong></td><td>80 - 86 cm</td><td>104 cm</td><td>68 - 78 kg</td></tr>
+        <tr><td><strong>L</strong></td><td>86 - 92 cm</td><td>106 cm</td><td>78 - 88 kg</td></tr>
+        <tr><td><strong>XL</strong></td><td>92 - 98 cm</td><td>108 cm</td><td>88 - 98 kg</td></tr>
+        <tr><td><strong>XXL</strong></td><td>98 - 105 cm</td><td>110 cm</td><td>98 - 110 kg</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<section class="m-story">
+  <p class="sec-eye">THE BRAND</p>
+  <h2>SAQR&reg;</h2>
+  <p>Independent dark luxury streetwear label from Cairo, Egypt. Established in 2026.</p>
+  <p>Same mindset, different angles. Built around distinct silhouettes, oversized cuts, and modern streetwear aesthetic.</p>
+  <div class="m-story__tags">
+    <span>CAIRO</span>
+    <span>DROP 01</span>
+    <span>STREETWEAR</span>
+    <span>EST. 2026</span>
+  </div>
+</section>
+
+<!-- ══ FEATURES ══ -->
+<div class="m-feats">
+  <div class="m-feat"><span class="m-feat__icon">&#9670;</span><h4>DARK AESTHETIC</h4><p>Custom oversized cuts</p></div>
+  <div class="m-feat"><span class="m-feat__icon">&#9670;</span><h4>LOCAL IDENTITY</h4><p>Crafted in Cairo</p></div>
+  <div class="m-feat"><span class="m-feat__icon">&#9670;</span><h4>FAST DELIVERY</h4><p>Across Egypt &amp; Worldwide</p></div>
+  <div class="m-feat"><span class="m-feat__icon">&#9670;</span><h4>EASY RETURNS</h4><p>14-day exchange policy</p></div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<section class="m-contact">
+  <p class="sec-eye">DIRECT ORDER &amp; INQUIRIES</p>
+  <h2 class="sec-title">CONTACT</h2>
+  <a href="https://www.instagram.com/saqrwear_" target="_blank" rel="noopener noreferrer" class="m-channel">
+    <span>INSTAGRAM</span>
+    <span>@saqrwear_ &#8599;</span>
+  </a>
+  <a href="https://wa.me/201143757832" target="_blank" rel="noopener noreferrer" class="m-channel">
+    <span>WHATSAPP</span>
+    <span>+20 114 375 7832 &#8599;</span>
+  </a>
+</section>
+
+<!-- ══ STICKY BOTTOM BAR ══ -->
+<div class="m-bottom-bar">
+  <div class="m-bottom-info">
+    <span class="m-bottom-tag">DROP 01 // 2026</span>
+    <span class="m-bottom-brand">SAQR&reg; CAIRO</span>
+  </div>
+  <a href="#collections" class="m-bottom-btn">SHOP NOW</a>
+</div>
+
+<!-- ══ 2-STEP CHECKOUT MODAL ══ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" hidden>
+  <div class="modal__backdrop" id="modalBackdrop"></div>
+  <div class="modal__panel">
+    <button class="modal__close" id="modalClose" type="button" aria-label="Close">&#10005;</button>
+
+    <div class="modal__steps">
+      <div class="step-dot active" data-step="1">1</div>
+      <div class="step-line"></div>
+      <div class="step-dot" data-step="2">2</div>
+    </div>
+
+    <!-- STEP 1: Product & Size -->
+    <div class="modal__step" id="step1">
+      <div class="modal__media" id="modalMedia"></div>
+      <p class="modal__tag" id="modalTag"></p>
+      <h2 class="modal__title" id="modalTitle"></h2>
+      <p class="modal__desc" id="modalDesc"></p>
+      <p class="modal__price" id="modalPrice"></p>
+
+      <!-- Size Chart Drawer -->
+      <div class="size-chart-wrap">
+        <button type="button" class="size-chart-toggle" id="sizeChartToggle">
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 8.7 8.7 21.3c-1 1-2.6 1-3.6 0l-2.4-2.4c-1-1-1-2.6 0-3.6L15.3 2.7c1-1 2.6-1 3.6 0l2.4 2.4c1 1 1 2.6 0 3.6z"/><line x1="14" y1="4" x2="16" y2="6"/><line x1="10" y1="8" x2="12" y2="10"/><line x1="6" y1="12" x2="8" y2="14"/></svg> <span>SIZE CHART &amp; MEASUREMENTS</span></span>
+          <span>&darr;</span>
+        </button>
+        <div class="size-chart-drawer" id="sizeChartDrawer">
+          <div class="size-chart-tabs">
+            <button type="button" class="sc-tab active" data-tab="sc-hoodie">HOODIE</button>
+            <button type="button" class="sc-tab" data-tab="sc-cargo">CARGO PANTS</button>
+          </div>
+          <div class="sc-table-wrap" id="sc-hoodie">
+            <table class="size-table">
+              <thead><tr><th>Size</th><th>Chest</th><th>Length</th><th>Weight</th></tr></thead>
+              <tbody>
+                <tr><td>S</td><td>58 cm</td><td>70 cm</td><td>55 - 68 kg</td></tr>
+                <tr><td>M</td><td>61 cm</td><td>72 cm</td><td>68 - 78 kg</td></tr>
+                <tr><td>L</td><td>64 cm</td><td>74 cm</td><td>78 - 88 kg</td></tr>
+                <tr><td>XL</td><td>67 cm</td><td>76 cm</td><td>88 - 98 kg</td></tr>
+                <tr><td>XXL</td><td>70 cm</td><td>78 cm</td><td>98 - 110 kg</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="sc-table-wrap" id="sc-cargo" hidden>
+            <table class="size-table">
+              <thead><tr><th>Size</th><th>Waist</th><th>Length</th><th>Weight</th></tr></thead>
+              <tbody>
+                <tr><td>S</td><td>74 - 80 cm</td><td>102 cm</td><td>55 - 68 kg</td></tr>
+                <tr><td>M</td><td>80 - 86 cm</td><td>104 cm</td><td>68 - 78 kg</td></tr>
+                <tr><td>L</td><td>86 - 92 cm</td><td>106 cm</td><td>78 - 88 kg</td></tr>
+                <tr><td>XL</td><td>92 - 98 cm</td><td>108 cm</td><td>88 - 98 kg</td></tr>
+                <tr><td>XXL</td><td>98 - 105 cm</td><td>110 cm</td><td>98 - 110 kg</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Sizes -->
+      <div id="sizeContainer"></div>
+
+      <div class="modal__field">
+        <label class="field-label">Quantity</label>
+        <div class="qty-ctrl">
+          <button class="qty-btn" id="qtyMinus" type="button">&minus;</button>
+          <span class="qty-val" id="qtyVal">1</span>
+          <button class="qty-btn" id="qtyPlus" type="button">+</button>
+        </div>
+      </div>
+
+      <button class="btn-next" id="btnNext" type="button">CONTINUE TO SHIPPING &rarr;</button>
+    </div>
+
+    <!-- STEP 2: Shipping & Payment -->
+    <div class="modal__step" id="step2" hidden>
+      <div class="modal__order-summary" id="orderSummary"></div>
+      
+      <div class="form-field">
+        <label for="oName">Full Name *</label>
+        <input type="text" id="oName" placeholder="Your full name" autocomplete="name" maxlength="60" required/>
+      </div>
+      <div class="form-field">
+        <label for="oPhone">Phone Number *</label>
+        <input type="tel" id="oPhone" placeholder="01XXXXXXXXX" autocomplete="tel" maxlength="20" required/>
+      </div>
+      <div class="form-field">
+        <label for="oAddress">Delivery Address &amp; City *</label>
+        <input type="text" id="oAddress" placeholder="e.g. Cairo, Nasr City" autocomplete="street-address" maxlength="150" required/>
+      </div>
+
+      <div class="form-field">
+        <label class="field-label">Payment Method *</label>
+        <div class="pay-methods">
+          <button type="button" class="pay-btn active" data-pay="Cash on Delivery"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg> <span>Cash on Delivery</span></button>
+          <button type="button" class="pay-btn" data-pay="InstaPay"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> <span>InstaPay</span></button>
+        </div>
+      </div>
+
+      <!-- InstaPay Box -->
+      <div class="instapay-box" id="instapayBox" hidden>
+        <div class="instapay-header">
+          <span class="instapay-badge">INSTAPAY TRANSFER</span>
+          <span class="instapay-acc">01094402501</span>
+        </div>
+        <p class="instapay-note">Transfer total to <strong>01094402501</strong> on InstaPay, then tap send below.</p>
+        <button type="button" class="instapay-copy-btn" id="copyInstapayBtn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> <span>COPY NUMBER (01094402501)</span></button>
+      </div>
+
+      <div class="modal__actions">
+        <button class="btn-back" id="btnBack" type="button">&larr; BACK</button>
+        <button class="btn-send" id="btnSend" type="button">SEND VIA WHATSAPP</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Global Image Fallback Handler
+window.addEventListener('error', function(e) {
+  if (e.target && e.target.tagName === 'IMG') {
+    const img = e.target;
+    if (!img.dataset.hasFellBack) {
+      img.dataset.hasFellBack = 'true';
+      const src = img.getAttribute('src') || '';
+      if (src.startsWith('images/')) {
+        img.src = src.replace('images/', '');
+      } else if (!src.startsWith('http') && !src.startsWith('data:')) {
+        img.src = 'images/' + src;
+      }
+    }
+  }
+}, true);
+
+const PRODUCTS = {
+  fullset: {
+    id: 'fullset',
+    type: 'set',
+    tag: 'FULL SET',
+    title: 'THE SIGNATURE FULL SET',
+    price: 2100,
+    desc: 'Heavyweight plush boucl\u00E9 oversized hoodie + matching strap cargo pants. Bronze metal clips.',
+    modelImg: 'images/product2.jpg',
+    flatImg: 'images/cargo_flatlay.jpg'
+  },
+  hoodie: {
+    id: 'hoodie',
+    type: 'hoodie',
+    tag: 'INDIVIDUAL PIECE',
+    title: 'THE OVERSIZED HOODIE',
+    price: 900,
+    desc: 'Plush boucl\u00E9 texture, front bronze zipper, relaxed oversized drop-shoulder cut.',
+    modelImg: 'images/product3.jpg',
+    flatImg: 'images/hoodie_flatlay.jpg'
+  },
+  cargo: {
+    id: 'cargo',
+    type: 'cargo',
+    tag: 'INDIVIDUAL PIECE',
+    title: 'THE CARGO PANTS',
+    price: 1200,
+    desc: 'Boucl\u00E9 tactical cargo pants with hanging buckle straps, antique bronze clips.',
+    modelImg: 'images/product1.jpg',
+    flatImg: 'images/cargo_flatlay.jpg'
+  }
+};
+
+let currentOrder = {
+  product: null,
+  hoodieSize: 'L',
+  pantsSize: 'L',
+  qty: 1,
+  paymentMethod: 'Cash on Delivery',
+  activeView: 'model'
+};
+
+const SIZES = ['S', 'M', 'L', 'XL', 'XXL'];
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initLoader();
+  initModal();
+});
+
+function initTheme() {
+  const themeToggle = document.getElementById('themeToggle');
+  const metaThemeColor = document.getElementById('metaThemeColor');
+  let savedTheme = 'light';
+  try { savedTheme = localStorage.getItem('saqr_theme') || 'light'; } catch(e) {}
+  applyTheme(savedTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = (currentTheme === 'light') ? 'dark' : 'light';
+      applyTheme(newTheme);
+      try { localStorage.setItem('saqr_theme', newTheme); } catch(e) {}
+    });
+  }
+
+  function applyTheme(theme) {
+    const safeTheme = (theme === 'dark') ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', safeTheme);
+    if (metaThemeColor) metaThemeColor.setAttribute('content', safeTheme === 'dark' ? '#060606' : '#ffffff');
+    if (themeToggle) {
+      themeToggle.innerHTML = (safeTheme === 'dark') 
+        ? '<span class="theme-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span><span class="theme-label">LIGHT</span>'
+        : '<span class="theme-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span><span class="theme-label">DARK</span>';
+    }
+  }
+}
+
+function initLoader() {
+  const loader = document.getElementById('loader');
+  const fill = document.getElementById('loaderFill');
+  const text = document.getElementById('loaderText');
+  if (!loader || !fill || !text) return;
+  let p = 0;
+  const interval = setInterval(() => {
+    p += Math.floor(Math.random() * 25) + 18;
+    if (p >= 100) {
+      p = 100;
+      clearInterval(interval);
+      fill.style.width = '100%';
+      text.textContent = 'READY 100%';
+      setTimeout(() => { loader.classList.add('hide'); }, 200);
+    } else {
+      fill.style.width = p + '%';
+      text.textContent = 'LOADING ' + p + '%';
+    }
+  }, 20);
+}
+
+function initModal() {
+  const modal = document.getElementById('modal');
+  const backdrop = document.getElementById('modalBackdrop');
+  const closeBtn = document.getElementById('modalClose');
+  const step1 = document.getElementById('step1');
+  const step2 = document.getElementById('step2');
+  const stepDots = document.querySelectorAll('.step-dot');
+
+  const modalMedia = document.getElementById('modalMedia');
+  const modalTag = document.getElementById('modalTag');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDesc');
+  const modalPrice = document.getElementById('modalPrice');
+  const sizeContainer = document.getElementById('sizeContainer');
+  const qtyVal = document.getElementById('qtyVal');
+  const qtyMinus = document.getElementById('qtyMinus');
+  const qtyPlus = document.getElementById('qtyPlus');
+
+  const sizeChartToggle = document.getElementById('sizeChartToggle');
+  const sizeChartDrawer = document.getElementById('sizeChartDrawer');
+  const scTabs = document.querySelectorAll('.sc-tab');
+  const scHoodie = document.getElementById('sc-hoodie');
+  const scCargo = document.getElementById('sc-cargo');
+
+  const payButtons = document.querySelectorAll('.pay-btn');
+  const instapayBox = document.getElementById('instapayBox');
+  const copyInstapayBtn = document.getElementById('copyInstapayBtn');
+
+  const btnNext = document.getElementById('btnNext');
+  const btnBack = document.getElementById('btnBack');
+  const btnSend = document.getElementById('btnSend');
+  const orderSummary = document.getElementById('orderSummary');
+
+  document.querySelectorAll('.js-card, .m-card__btn').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const card = trigger.closest('.js-card');
+      const prodKey = trigger.dataset.product || (card ? card.dataset.product : 'fullset');
+      openModal(prodKey);
+    });
+  });
+
+  function openModal(prodKey) {
+    const validKey = (typeof prodKey === 'string' && Object.prototype.hasOwnProperty.call(PRODUCTS, prodKey)) ? prodKey : 'fullset';
+    const prod = PRODUCTS[validKey];
+
+    currentOrder.product = prod;
+    currentOrder.hoodieSize = 'L';
+    currentOrder.pantsSize = 'L';
+    currentOrder.qty = 1;
+    currentOrder.paymentMethod = 'Cash on Delivery';
+    currentOrder.activeView = 'model';
+
+    modalTag.textContent = prod.tag;
+    modalTitle.textContent = prod.title;
+    modalDesc.textContent = prod.desc;
+    modalPrice.textContent = prod.price.toLocaleString() + ' EGP';
+    qtyVal.textContent = '1';
+
+    if (sizeChartDrawer) {
+      sizeChartDrawer.hidden = false;
+      if (prod.type === 'cargo') {
+        scTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === 'sc-cargo'));
+        if (scHoodie) scHoodie.hidden = true;
+        if (scCargo) scCargo.hidden = false;
+      } else {
+        scTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === 'sc-hoodie'));
+        if (scHoodie) scHoodie.hidden = false;
+        if (scCargo) scCargo.hidden = true;
+      }
+    }
+
+    payButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.pay === 'Cash on Delivery'));
+    if (instapayBox) instapayBox.hidden = true;
+
+    renderSizePickers();
+    renderModalMedia();
+    goToStep(1);
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  if (sizeChartToggle && sizeChartDrawer) {
+    sizeChartToggle.addEventListener('click', () => {
+      sizeChartDrawer.hidden = !sizeChartDrawer.hidden;
+    });
+  }
+
+  scTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      scTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.tab;
+      if (scHoodie) scHoodie.hidden = (target !== 'sc-hoodie');
+      if (scCargo) scCargo.hidden = (target !== 'sc-cargo');
+    });
+  });
+
+  payButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      payButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentOrder.paymentMethod = btn.dataset.pay;
+      if (instapayBox) instapayBox.hidden = (currentOrder.paymentMethod !== 'InstaPay');
+      renderOrderSummary();
+    });
+  });
+
+  if (copyInstapayBtn) {
+    copyInstapayBtn.addEventListener('click', () => {
+      const num = '01094402501';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(num).then(showCopied).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+
+      function fallbackCopy() {
+        const temp = document.createElement('textarea');
+        temp.value = num;
+        document.body.appendChild(temp);
+        temp.select();
+        try { document.execCommand('copy'); showCopied(); } catch(e) { alert('InstaPay Number: ' + num); }
+        document.body.removeChild(temp);
+      }
+
+      function showCopied() {
+        copyInstapayBtn.textContent = '✓ Copied (01094402501)';
+        setTimeout(() => { copyInstapayBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> <span>COPY NUMBER (01094402501)</span>'; }, 2500);
+      }
+    });
+  }
+
+  function renderSizePickers() {
+    sizeContainer.innerHTML = '';
+    const type = currentOrder.product.type;
+
+    function makeGroup(title, curr, onSel) {
+      const g = document.createElement('div');
+      g.className = 'size-group';
+      const t = document.createElement('div');
+      t.className = 'size-group__title';
+      t.textContent = title;
+      g.appendChild(t);
+      const grid = document.createElement('div');
+      grid.className = 'size-grid';
+      SIZES.forEach(s => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'size-btn' + (s === curr ? ' active' : '');
+        b.textContent = s;
+        b.addEventListener('click', () => {
+          grid.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+          b.classList.add('active');
+          onSel(s);
+        });
+        grid.appendChild(b);
+      });
+      g.appendChild(grid);
+      return g;
+    }
+
+    if (type === 'set') {
+      sizeContainer.appendChild(makeGroup('1. Select Hoodie Size', currentOrder.hoodieSize, s => { currentOrder.hoodieSize = s; }));
+      sizeContainer.appendChild(makeGroup('2. Select Cargo Pants Size', currentOrder.pantsSize, s => { currentOrder.pantsSize = s; }));
+    } else if (type === 'hoodie') {
+      sizeContainer.appendChild(makeGroup('Select Hoodie Size', currentOrder.hoodieSize, s => { currentOrder.hoodieSize = s; }));
+    } else if (type === 'cargo') {
+      sizeContainer.appendChild(makeGroup('Select Cargo Size', currentOrder.pantsSize, s => { currentOrder.pantsSize = s; }));
+    }
+  }
+
+  function renderModalMedia() {
+    const imgSrc = currentOrder.activeView === 'model' ? currentOrder.product.modelImg : currentOrder.product.flatImg;
+    modalMedia.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    modalMedia.appendChild(img);
+
+    const sw = document.createElement('div');
+    sw.className = 'modal__view-switcher';
+    ['model', 'flat'].forEach(view => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'modal__view-btn' + (currentOrder.activeView === view ? ' active' : '');
+      b.textContent = view === 'model' ? 'ON MODEL' : 'FLAT LAY';
+      b.addEventListener('click', () => { currentOrder.activeView = view; renderModalMedia(); });
+      sw.appendChild(b);
+    });
+    modalMedia.appendChild(sw);
+  }
+
+  function closeModal() {
+    modal.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+  }
+
+  backdrop.addEventListener('click', closeModal);
+  closeBtn.addEventListener('click', closeModal);
+
+  qtyMinus.addEventListener('click', () => { if (currentOrder.qty > 1) { currentOrder.qty--; qtyVal.textContent = currentOrder.qty; } });
+  qtyPlus.addEventListener('click', () => { if (currentOrder.qty < 10) { currentOrder.qty++; qtyVal.textContent = currentOrder.qty; } });
+
+  function goToStep(s) {
+    if (s === 1) {
+      step1.removeAttribute('hidden'); step2.setAttribute('hidden', '');
+      stepDots[0].classList.add('active'); stepDots[1].classList.remove('active');
+    } else {
+      step1.setAttribute('hidden', ''); step2.removeAttribute('hidden');
+      stepDots[0].classList.remove('active'); stepDots[1].classList.add('active');
+      renderOrderSummary();
+    }
+  }
+
+  function renderOrderSummary() {
+    const total = currentOrder.product.price * currentOrder.qty;
+    const type = currentOrder.product.type;
+    orderSummary.innerHTML = '';
+
+    function addRow(l, v, isTot) {
+      const r = document.createElement('div');
+      r.className = 'summary-item' + (isTot ? ' total' : '');
+      const s1 = document.createElement('span'); s1.textContent = l;
+      const s2 = document.createElement(isTot ? 'span' : 'strong');
+      if (!isTot) s2.style.color = 'var(--text-main)';
+      s2.textContent = v;
+      r.appendChild(s1); r.appendChild(s2);
+      return r;
+    }
+
+    const t = document.createElement('h3');
+    t.style.cssText = 'font-size:1rem;font-weight:700;margin-bottom:0.6rem;color:var(--text-main);';
+    t.textContent = 'Order Summary';
+    orderSummary.appendChild(t);
+    orderSummary.appendChild(addRow('Item:', currentOrder.product.title));
+    if (type === 'set') {
+      orderSummary.appendChild(addRow('Hoodie Size:', currentOrder.hoodieSize));
+      orderSummary.appendChild(addRow('Cargo Pants Size:', currentOrder.pantsSize));
+    } else if (type === 'hoodie') {
+      orderSummary.appendChild(addRow('Hoodie Size:', currentOrder.hoodieSize));
+    } else if (type === 'cargo') {
+      orderSummary.appendChild(addRow('Cargo Pants Size:', currentOrder.pantsSize));
+    }
+    orderSummary.appendChild(addRow('Quantity:', String(currentOrder.qty)));
+    orderSummary.appendChild(addRow('Payment:', currentOrder.paymentMethod));
+    orderSummary.appendChild(addRow('Total:', total.toLocaleString() + ' EGP', true));
+  }
+
+  btnNext.addEventListener('click', () => goToStep(2));
+  btnBack.addEventListener('click', () => goToStep(1));
+
+  let sendCooldown = false;
+  btnSend.addEventListener('click', () => {
+    if (sendCooldown) {
+      alert('Please wait a moment before sending again.');
+      return;
+    }
+
+    const rawName = document.getElementById('oName').value.trim();
+    const rawPhone = document.getElementById('oPhone').value.trim();
+    const rawAddress = document.getElementById('oAddress').value.trim();
+
+    const name = rawName.replace(/[<>{}\[\]\\^`|"']/g, '').slice(0, 60);
+    const phone = rawPhone.replace(/[^0-9+\- ]/g, '').slice(0, 20);
+    const address = rawAddress.replace(/[<>{}\[\]\\^`|"']/g, '').slice(0, 150);
+
+    if (!name || !phone || !address) {
+      alert('Please fill in your name, phone number, and delivery address.');
+      return;
+    }
+
+    const phoneDigits = phone.replace(/[\s\-+]/g, '');
+    if (!/^01[0-9]{9}$/.test(phoneDigits)) {
+      alert('Please enter a valid Egyptian phone number (e.g. 01XXXXXXXXX — 11 digits).');
+      return;
+    }
+
+    if (!/[a-zA-Z\u0600-\u06FF]/.test(name)) {
+      alert('Please enter your real name.');
+      return;
+    }
+
+    const total = currentOrder.product.price * currentOrder.qty;
+    const type = currentOrder.product.type;
+
+    let sizeInfo = '';
+    if (type === 'set') sizeInfo = 'Hoodie: ' + currentOrder.hoodieSize + ' | Pants: ' + currentOrder.pantsSize;
+    else if (type === 'hoodie') sizeInfo = 'Hoodie: ' + currentOrder.hoodieSize;
+    else if (type === 'cargo') sizeInfo = 'Pants: ' + currentOrder.pantsSize;
+
+    let payNote = 'Cash on Delivery (COD)';
+    let receiptNote = '';
+    if (currentOrder.paymentMethod === 'InstaPay') {
+      payNote = 'InstaPay (Transferred to 01094402501)';
+      receiptNote = '\n----------------------------------\n[Attaching InstaPay Transfer Receipt]';
+    }
+
+    const lines = [
+      'SAQR® New Order:',
+      '----------------------------------',
+      '• Item: ' + currentOrder.product.title + ' (' + currentOrder.qty + 'x)',
+      '• Size: ' + sizeInfo,
+      '• Address: ' + address,
+      '• Payment: ' + payNote,
+      '• Total: ' + total.toLocaleString() + ' EGP',
+      '----------------------------------',
+      '• Customer: ' + name,
+      '• Phone: ' + phoneDigits + receiptNote,
+      '----------------------------------',
+      'Ready for confirmation & dispatch.'
+    ];
+    const msg = lines.join('\n');
+
+    const encoded = encodeURIComponent(msg);
+    window.open('https://wa.me/201143757832?text=' + encoded, '_blank', 'noopener,noreferrer');
+
+    sendCooldown = true;
+    btnSend.textContent = '✓ ORDER SENT';
+    btnSend.disabled = true;
+
+    setTimeout(() => {
+      sendCooldown = false;
+      btnSend.disabled = false;
+      closeModal();
+      btnSend.textContent = 'SEND VIA WHATSAPP';
+    }, 5000);
+  });
+}
+</script>
+</body>
+</html>
