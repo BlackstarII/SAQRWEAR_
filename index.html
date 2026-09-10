@@ -1,0 +1,2816 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
+  <!-- Anti-MitM & Strict Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; upgrade-insecure-requests;"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <title>SAQR® — WEAR THE LEGACY | Cairo Streetwear</title>
+  
+  <!-- SEO & OpenGraph for Instagram Bio / Social Sharing -->
+  <meta name="description" content="SAQR® — Avant-garde dark luxury streetwear from Cairo, Egypt. Heavyweight bouclé oversized hoodies and utility cargo pants with custom metal hardware. Established 2026."/>
+  <meta name="keywords" content="SAQR, SAQR Wear, streetwear, Cairo streetwear, oversized hoodie, cargo pants, Egyptian fashion, dark luxury"/>
+  <meta name="author" content="SAQR®"/>
+  <meta name="robots" content="index, follow"/>
+  <meta name="theme-color" content="#ffffff" id="metaThemeColor"/>
+
+  <!-- Open Graph / Facebook / Instagram -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="SAQR® — WEAR THE LEGACY"/>
+  <meta property="og:description" content="Avant-garde streetwear from Cairo, Egypt. Heavyweight bouclé hoodies &amp; tactical cargos. Drop 01 available now."/>
+  <meta property="og:image" content="images/product6.jpg"/>
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="SAQR® — WEAR THE LEGACY"/>
+  <meta name="twitter:description" content="Avant-garde streetwear from Cairo, Egypt. Heavyweight bouclé hoodies &amp; tactical cargos."/>
+  <meta name="twitter:image" content="images/product6.jpg"/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg"/>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+  
+  <!-- Stylesheet -->
+  <style>
+/* ═══════════════════════════════════════════════════════════════
+   SAQR® — WEAR THE LEGACY
+   High-Contrast Dark & Light Mode + Performance Optimized
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg-dark: #060606;
+  --bg-card: #0e0e0e;
+  --bg-elevated: #161616;
+  --border: #222222;
+  --border-light: #333333;
+  --text-main: #f5f5f5;
+  --text-muted: #8e8e8e;
+  --navbar-bg: rgba(6, 6, 6, 0.92);
+  --modal-bg: #0e0e0e;
+  --modal-box: #080808;
+  --btn-main-bg: #ffffff;
+  --btn-main-color: #000000;
+  --active-bg: #ffffff;
+  --active-color: #000000;
+  --font-en: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --transition: 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+[data-theme="light"] {
+  --bg-dark: #fbfbfb;
+  --bg-card: #ffffff;
+  --bg-elevated: #f2f2f2;
+  --border: #e2e2e2;
+  --border-light: #cccccc;
+  --text-main: #111111;
+  --text-muted: #666666;
+  --navbar-bg: rgba(251, 251, 251, 0.95);
+  --modal-bg: #ffffff;
+  --modal-box: #f4f4f4;
+  --btn-main-bg: #111111;
+  --btn-main-color: #ffffff;
+  --active-bg: #111111;
+  --active-color: #ffffff;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-en);
+  direction: ltr;
+  -webkit-text-size-adjust: 100%;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+  background-color: var(--bg-dark);
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* Custom Cursor (Desktop Only) */
+.cursor {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--text-main);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease, opacity 0.2s ease;
+  will-change: left, top;
+}
+.cursor-trail {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(150, 150, 150, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+  will-change: left, top;
+}
+@media (hover: none), (pointer: coarse), (max-width: 1024px) {
+  .cursor, .cursor-trail { display: none !important; }
+}
+
+/* Loader */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-dark);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.loader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.loader-inner {
+  text-align: center;
+  max-width: 240px;
+  width: 90%;
+}
+.loader-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 0 15px rgba(150,150,150,0.15));
+}
+.loader-bar {
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 0.8rem;
+}
+.loader-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--text-main);
+  transition: width 0.12s ease-out;
+}
+.loader-text {
+  font-family: var(--font-en);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 75px;
+  z-index: 1000;
+  background: transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+.navbar.scrolled {
+  background: var(--navbar-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1400px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo img {
+  height: 34px;
+  width: auto;
+  display: block;
+  border-radius: 2px;
+}
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  transition: color var(--transition);
+}
+.nav-links a:hover { color: var(--text-main); }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-en);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: var(--transition);
+  touch-action: manipulation;
+}
+.theme-toggle:hover {
+  border-color: var(--text-main);
+  transform: translateY(-1px);
+}
+.theme-icon { font-size: 0.85rem; }
+
+.nav-cta {
+  font-family: var(--font-en);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--btn-main-color);
+  background: var(--btn-main-bg);
+  padding: 0.55rem 1.3rem;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: transform var(--transition), box-shadow var(--transition);
+  touch-action: manipulation;
+}
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(150,150,150,0.25);
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 22px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2px;
+  z-index: 1001;
+}
+.nav-toggle span {
+  width: 100%;
+  height: 2px;
+  background: var(--text-main);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 2px;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* Mobile Menu Drawer */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-dark);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
+}
+.mobile-menu.open {
+  transform: translateX(0);
+  visibility: visible;
+}
+.mobile-menu__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
+.mobile-menu__link {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: color 0.2s;
+}
+.mobile-menu__link:hover { color: var(--text-muted); }
+.mobile-menu__footer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.mobile-menu__soc {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+.mobile-menu__est {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.42) contrast(1.1);
+  transform: scale(1.02);
+}
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(5,5,5,0.1) 0%, rgba(5,5,5,0.85) 85%, #050505 100%),
+              linear-gradient(to top, var(--bg-dark) 0%, transparent 40%),
+              linear-gradient(to bottom, var(--bg-dark) 0%, transparent 20%);
+}
+.hero-center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.hero-sub {
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  color: #aaa;
+  margin-bottom: 1.2rem;
+}
+.hero-heading {
+  font-family: var(--font-en);
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.8rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+.hero-word--outline {
+  -webkit-text-stroke: 1.5px #fff;
+  color: transparent;
+}
+.hero-tagline {
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  font-weight: 400;
+  color: #bbb;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.02em;
+}
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: #ffffff;
+  color: #000000;
+  padding: 1.1rem 2.2rem;
+  font-family: var(--font-en);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: transform var(--transition), box-shadow var(--transition);
+  touch-action: manipulation;
+}
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+}
+
+/* High-Visibility Hero Scroll Indicator */
+.hero-scroll {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  padding: 0.65rem 1.4rem;
+  border-radius: 30px;
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+[data-theme="light"] .hero-scroll {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+.hero-scroll:hover {
+  transform: translateX(-50%) translateY(-3px);
+  border-color: #fff;
+  background: #000000;
+}
+[data-theme="light"] .hero-scroll:hover {
+  border-color: #000;
+  background: #ffffff;
+}
+.hero-scroll span {
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  color: #ffffff !important;
+}
+[data-theme="light"] .hero-scroll span {
+  color: #000000 !important;
+}
+.hero-scroll-mouse {
+  width: 14px;
+  height: 22px;
+  border: 1.5px solid #ffffff;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+[data-theme="light"] .hero-scroll-mouse {
+  border-color: #000000;
+}
+.hero-scroll-wheel {
+  width: 2.5px;
+  height: 5px;
+  background: #ffffff;
+  border-radius: 2px;
+  margin-top: 3px;
+  animation: mouseWheel 1.6s infinite ease-in-out;
+}
+[data-theme="light"] .hero-scroll-wheel {
+  background: #000000;
+}
+.hero-scroll-arrow {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #ffffff !important;
+  animation: bounceArrow 1.6s infinite ease-in-out;
+}
+[data-theme="light"] .hero-scroll-arrow {
+  color: #000000 !important;
+}
+
+@keyframes mouseWheel {
+  0% { transform: translateY(0); opacity: 1; }
+  60% { transform: translateY(6px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+.hero-corner {
+  position: absolute;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #777;
+  z-index: 2;
+}
+.hero-corner--tl { top: 6rem; left: 2rem; }
+.hero-corner--tr { top: 6rem; right: 2rem; }
+.hero-corner--bl { bottom: 2rem; left: 2rem; }
+.hero-corner--br { bottom: 2rem; right: 2rem; }
+
+/* Marquee */
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  display: flex;
+}
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  white-space: nowrap;
+  animation: marquee 25s linear infinite;
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+}
+.mx { color: var(--text-main); margin: 0 0.5rem; }
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Section Header */
+.sec-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.sec-eye {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.sec-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: var(--text-main);
+  margin-bottom: 0.8rem;
+}
+.sec-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 550px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Collections Grid */
+.collections {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+.grid--3col { grid-template-columns: repeat(3, 1fr); }
+
+.grid-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+}
+.grid-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-light);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+.grid-card--featured {
+  border-color: var(--border-light);
+}
+.grid-card__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--btn-main-bg);
+  color: var(--btn-main-color);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  padding: 0.35rem 0.75rem;
+  z-index: 5;
+  border-radius: 1px;
+}
+.grid-card__media {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: #000;
+}
+.grid-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.grid-card__hover-img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.grid-card:hover .grid-card__hover-img { opacity: 1; }
+.grid-card:hover .grid-card__media img { transform: scale(1.04); }
+
+.grid-card__info {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.grid-card__tag {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+.grid-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.03em;
+  color: var(--text-main);
+}
+.grid-card__desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.4rem;
+  flex-grow: 1;
+}
+.grid-card__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.2rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+.grid-card__price {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--text-main);
+}
+.grid-card__sizes-hint {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.grid-card__btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--btn-main-bg);
+  color: var(--btn-main-color);
+  border: none;
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  touch-action: manipulation;
+}
+.grid-card__btn:hover { opacity: 0.9; }
+
+/* Lookbook */
+.lookbook {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+.lookbook__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.lookbook__item {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+.lookbook__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lookbook__item:hover img { transform: scale(1.05); }
+.lookbook__caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+.lookbook__caption span { color: #aaa; }
+
+/* Editorial Strip */
+.editorial {
+  position: relative;
+  height: 50vh;
+  min-height: 380px;
+  margin: 5rem 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.editorial__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.35);
+}
+.editorial__overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+}
+.editorial__overlay p {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: #bbb;
+  margin-bottom: 0.8rem;
+}
+.editorial__overlay h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 1.8rem;
+  letter-spacing: 0.05em;
+}
+.editorial__link {
+  display: inline-block;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 4px;
+  transition: opacity 0.2s;
+}
+.editorial__link:hover { opacity: 0.7; }
+
+/* Size Guide Section */
+.size-guide-sec {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+.sg-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+.sg-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2rem;
+}
+.sg-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+.sg-card__icon { font-size: 1.4rem; }
+.sg-card__header h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--text-main);
+}
+.size-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 0.82rem;
+}
+.size-table th {
+  padding: 0.75rem;
+  background: var(--bg-elevated);
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--border);
+}
+.size-table td {
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.size-table tr:hover td {
+  background: var(--bg-elevated);
+  color: var(--text-main);
+}
+
+/* About Section */
+.story {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+.story__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.story__imgs {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 1.5rem;
+}
+.story__img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+.story__img--accent {
+  margin-top: 2rem;
+}
+.story__text h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+}
+.story__text p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+.story__tags {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+.story__tags span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 0.4rem 0.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.btn-outline {
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  border: 1px solid var(--text-main);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-outline:hover {
+  background: var(--text-main);
+  color: var(--bg-dark);
+}
+
+/* Features Strip */
+.feats {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.feat {
+  text-align: center;
+  padding: 1rem;
+}
+.feat__icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  display: block;
+  color: var(--text-main);
+}
+.feat h4 {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
+}
+.feat p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Contact */
+.contact {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+.contact__channels {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.channel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform var(--transition), border-color var(--transition);
+}
+.channel:hover {
+  transform: translateY(-4px);
+  border-color: var(--text-main);
+}
+.channel__label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+.channel__val {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Footer */
+.footer {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  padding: 4rem 2rem 2rem;
+}
+.footer__top {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.footer__logo {
+  height: 38px;
+  width: auto;
+  margin-bottom: 1rem;
+}
+.footer__top p {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
+}
+.footer__bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CHECKOUT MODAL
+   ═══════════════════════════════════════════════════════════════ */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.modal[hidden] { display: none; }
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.modal__panel {
+  position: relative;
+  z-index: 2;
+  background: var(--modal-bg);
+  border: 1px solid var(--border-light);
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+  border-radius: 2px;
+}
+.modal__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+  touch-action: manipulation;
+}
+.modal__close:hover {
+  background: var(--btn-main-bg);
+  color: var(--btn-main-color);
+}
+.modal__steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.step-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.step-dot.active {
+  background: var(--active-bg);
+  color: var(--active-color);
+  border-color: var(--active-bg);
+}
+.step-line {
+  width: 40px;
+  height: 1px;
+  background: var(--border-light);
+}
+
+/* Modal Step 1 */
+.modal__step {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+.modal__step[hidden] { display: none; }
+.modal__media {
+  position: relative;
+  background: #000;
+  border: 1px solid var(--border);
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+.modal__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.modal__view-switcher {
+  position: absolute;
+  bottom: 0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0,0,0,0.85);
+  padding: 0.35rem 0.7rem;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.modal__view-btn {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  touch-action: manipulation;
+}
+.modal__view-btn.active {
+  background: #ffffff;
+  color: #000000;
+}
+
+.modal__details { display: flex; flex-direction: column; }
+.modal__tag {
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+.modal__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.03em;
+  color: var(--text-main);
+}
+.modal__desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+.modal__price {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+}
+
+/* Size Chart Drawer */
+.size-chart-wrap { margin-bottom: 1.2rem; }
+.size-chart-toggle {
+  width: 100%;
+  background: var(--modal-box);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+  touch-action: manipulation;
+}
+.size-chart-toggle:hover { border-color: var(--text-main); }
+.toggle-arrow { transition: transform 0.3s ease; }
+.size-chart-toggle.open .toggle-arrow { transform: rotate(180deg); }
+.size-chart-drawer {
+  background: var(--modal-box);
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 1rem;
+}
+.size-chart-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+.sc-tab {
+  flex: 1;
+  padding: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-en);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: 0.2s;
+  touch-action: manipulation;
+}
+.sc-tab.active {
+  background: var(--text-main);
+  color: var(--bg-dark);
+  border-color: var(--text-main);
+}
+
+/* Dynamic Size Pickers */
+.size-group {
+  margin-bottom: 1.2rem;
+  background: var(--modal-box);
+  padding: 0.9rem;
+  border: 1px solid var(--border);
+}
+.size-group__title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-main);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+}
+.size-grid {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.size-btn {
+  min-width: 44px;
+  height: 38px;
+  padding: 0 0.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: 0.2s;
+  touch-action: manipulation;
+}
+.size-btn:hover { border-color: var(--text-main); }
+.size-btn.active {
+  background: var(--active-bg) !important;
+  color: var(--active-color) !important;
+  border-color: var(--active-bg) !important;
+  font-weight: 800;
+}
+
+.modal__field {
+  margin-bottom: 1.5rem;
+}
+.field-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.qty-ctrl {
+  display: inline-flex;
+  align-items: center;
+  background: var(--modal-box);
+  border: 1px solid var(--border-light);
+}
+.qty-btn {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  touch-action: manipulation;
+}
+.qty-btn:hover { background: var(--bg-elevated); }
+.qty-val {
+  padding: 0 1rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+.btn-next {
+  width: 100%;
+  padding: 1.1rem;
+  background: var(--btn-main-bg);
+  color: var(--btn-main-color);
+  border: none;
+  font-family: var(--font-en);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  touch-action: manipulation;
+}
+.btn-next:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Modal Step 2: Shipping & Payment */
+#step2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+.modal__order-summary {
+  background: var(--modal-box);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+}
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+.summary-item.total {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.modal__form-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  color: var(--text-main);
+}
+.form-field {
+  margin-bottom: 1rem;
+}
+.form-field label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+.form-field input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--modal-box);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  font-family: var(--font-en);
+  font-size: 0.85rem;
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-field input:focus { border-color: var(--text-main); }
+
+/* Payment Methods */
+.pay-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+.pay-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem;
+  background: var(--modal-box);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+  touch-action: manipulation;
+}
+.pay-btn:hover { border-color: var(--text-main); }
+.pay-btn.active {
+  background: var(--active-bg) !important;
+  color: var(--active-color) !important;
+  border-color: var(--active-bg) !important;
+}
+
+/* InstaPay Box */
+.instapay-box {
+  background: rgba(196, 167, 104, 0.08);
+  border: 1px dashed #c4a768;
+  padding: 1.2rem;
+  margin-top: 1rem;
+  border-radius: 2px;
+}
+.instapay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+.instapay-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #c4a768;
+}
+.instapay-acc {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #c4a768;
+  letter-spacing: 0.05em;
+}
+.instapay-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+}
+.instapay-note strong { color: #c4a768; }
+.instapay-copy-btn {
+  width: 100%;
+  padding: 0.65rem;
+  background: transparent;
+  border: 1px solid rgba(196, 167, 104, 0.4);
+  color: #c4a768;
+  font-family: var(--font-en);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+  touch-action: manipulation;
+}
+.instapay-copy-btn:hover {
+  background: #c4a768;
+  color: #000;
+}
+
+.modal__actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.btn-back {
+  padding: 1rem 1.4rem;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  transition: 0.2s;
+  touch-action: manipulation;
+}
+.btn-back:hover {
+  color: var(--text-main);
+  border-color: var(--text-main);
+}
+.btn-send {
+  flex-grow: 1;
+  padding: 1rem;
+  background: #25D366;
+  color: #000000;
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  touch-action: manipulation;
+}
+.btn-send:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+}
+.modal__note {
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Animations */
+.js-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--d, 0s);
+  will-change: opacity, transform;
+}
+.js-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js-reveal-group > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.js-reveal-group.is-revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.js-reveal-group.is-revealed > *:nth-child(1) { transition-delay: 0.05s; }
+.js-reveal-group.is-revealed > *:nth-child(2) { transition-delay: 0.12s; }
+.js-reveal-group.is-revealed > *:nth-child(3) { transition-delay: 0.2s; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .story__grid { grid-template-columns: 1fr; gap: 3rem; }
+  .feats { grid-template-columns: repeat(2, 1fr); }
+  .contact__channels { grid-template-columns: 1fr; }
+  .lookbook__grid { grid-template-columns: 1fr; }
+  .sg-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .hero-heading { font-size: 3.2rem; }
+  .hero-corner { display: none; }
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .grid { grid-template-columns: 1fr; }
+  .feats { grid-template-columns: 1fr; }
+  .modal__step { grid-template-columns: 1fr; gap: 1.5rem; }
+  #step2 { grid-template-columns: 1fr; gap: 1.5rem; }
+  .modal__panel { padding: 1.5rem; }
+  .footer__bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+}
+
+
+/* ══ ULTRA-CLEAR HIGH-CONTRAST HERO SCROLL PILL ══ */
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: #000000;
+  color: #ffffff !important;
+  border: 2px solid #ffffff;
+  padding: 0.75rem 1.7rem;
+  border-radius: 40px;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 18px rgba(255, 255, 255, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+  touch-action: manipulation;
+  animation: scrollPulse 2.5s infinite ease-in-out;
+}
+
+[data-theme="light"] .hero-scroll {
+  background: #ffffff;
+  color: #000000 !important;
+  border: 2px solid #000000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 18px rgba(0, 0, 0, 0.15);
+}
+
+.hero-scroll:hover {
+  transform: translateX(-50%) translateY(-4px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="light"] .hero-scroll:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 0, 0, 0.25);
+}
+
+.hero-scroll span {
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .hero-scroll span {
+  color: #000000 !important;
+}
+
+.hero-scroll-mouse {
+  width: 15px;
+  height: 24px;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+[data-theme="light"] .hero-scroll-mouse {
+  border-color: #000000;
+}
+
+.hero-scroll-wheel {
+  width: 3px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 2px;
+  margin-top: 3px;
+  animation: mouseWheel 1.5s infinite ease-in-out;
+}
+
+[data-theme="light"] .hero-scroll-wheel {
+  background: #000000;
+}
+
+.hero-scroll-arrow {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #ffffff !important;
+  animation: bounceArrow 1.5s infinite ease-in-out;
+  line-height: 1;
+}
+
+[data-theme="light"] .hero-scroll-arrow {
+  color: #000000 !important;
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.04);
+  }
+}
+
+@keyframes mouseWheel {
+  0% { transform: translateY(0); opacity: 1; }
+  60% { transform: translateY(7px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══ CUSTOM CURSOR (DESKTOP ONLY) ══ -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-trail" id="cursorTrail" aria-hidden="true"></div>
+
+<!-- ══ FAST PRELOADER ══ -->
+<div class="loader" id="loader" aria-label="Loading SAQR®">
+  <div class="loader-inner">
+    <img src="images/logo.jpg" alt="SAQR®" class="loader-logo"/>
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+    <p class="loader-text" id="loaderText">LOADING 0%</p>
+  </div>
+</div>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="SAQR Home">
+      <img src="images/logo.jpg" alt="SAQR® Logo"/>
+    </a>
+    
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#collections" class="nav-link-item">COLLECTION</a></li>
+      <li><a href="#lookbook" class="nav-link-item">LOOKBOOK</a></li>
+      <li><a href="#size-guide" class="nav-link-item">SIZE GUIDE</a></li>
+      <li><a href="#about" class="nav-link-item">ABOUT</a></li>
+      <li><a href="#contact" class="nav-link-item">CONTACT</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle Light/Dark Theme">
+        <span class="theme-icon">🌙</span>
+        <span class="theme-label">DARK</span>
+      </button>
+      <a href="#collections" class="nav-cta">SHOP NOW</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle mobile navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MOBILE MENU OVERLAY ══ -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__inner">
+    <a href="#collections" class="mobile-menu__link">COLLECTION</a>
+    <a href="#lookbook" class="mobile-menu__link">LOOKBOOK</a>
+    <a href="#size-guide" class="mobile-menu__link">SIZE GUIDE</a>
+    <a href="#about" class="mobile-menu__link">ABOUT</a>
+    <a href="#contact" class="mobile-menu__link">CONTACT</a>
+    <div class="mobile-menu__footer">
+      <a href="https://www.instagram.com/saqrwear_" target="_blank" rel="noopener noreferrer" class="mobile-menu__soc">INSTAGRAM @SAQRWEAR_ ↗</a>
+      <p class="mobile-menu__est">EST. 2026 — CAIRO, EGYPT</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="hero">
+  <div class="hero-media">
+    <img src="images/product6.jpg" alt="SAQR Editorial Shoot" class="hero-img" id="heroImg" fetchpriority="high"/>
+    <div class="hero-vignette"></div>
+  </div>
+
+  <div class="hero-center">
+    <p class="hero-sub js-reveal" style="--d:0.05s">CAIRO, EGYPT — EST. 2026</p>
+    <h1 class="hero-heading">
+      <span class="hero-word js-glitch">WEAR</span>
+      <span class="hero-word hero-word--outline js-glitch">THE</span>
+      <span class="hero-word js-glitch">LEGACY</span>
+    </h1>
+    <p class="hero-tagline js-reveal" style="--d:0.2s">Heavyweight bouclé silhouettes engineered with custom metal hardware</p>
+    <a href="#collections" class="hero-cta js-reveal" style="--d:0.35s">
+      <span>VIEW COLLECTION</span>
+      <svg viewBox="0 0 40 12" fill="none" width="40" height="12"><path d="M0 6h38M32 1l6 5-6 5" stroke="currentColor" stroke-width="1.2"/></svg>
+    </a>
+  </div>
+
+  <!-- High-visibility clickable scroll indicator -->
+  <a href="#collections" class="hero-scroll" aria-label="Scroll to collection">
+    <span>SCROLL</span>
+    <div class="hero-scroll-mouse">
+      <div class="hero-scroll-wheel"></div>
+    </div>
+    <span class="hero-scroll-arrow">↓</span>
+  </a>
+
+  <div class="hero-corner hero-corner--tl">SAQR WEAR MAGAZINE</div>
+  <div class="hero-corner hero-corner--tr">DROP 01 // 2026</div>
+  <div class="hero-corner hero-corner--bl">THE FALCON // THE LEGACY</div>
+  <div class="hero-corner hero-corner--br">@SAQRWEAR_</div>
+</section>
+
+<!-- ══ MARQUEE ══ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>SAQR®</span><span class="mx">◆</span>
+    <span>WEAR THE LEGACY</span><span class="mx">◆</span>
+    <span>BOUCLÉ HOODIES &amp; CARGOS</span><span class="mx">◆</span>
+    <span>CUSTOM METAL HARDWARE</span><span class="mx">◆</span>
+    <span>MADE IN EGYPT</span><span class="mx">◆</span>
+    <span>EST. 2026</span><span class="mx">◆</span>
+    <span>SAQR®</span><span class="mx">◆</span>
+    <span>WEAR THE LEGACY</span><span class="mx">◆</span>
+    <span>BOUCLÉ HOODIES &amp; CARGOS</span><span class="mx">◆</span>
+    <span>CUSTOM METAL HARDWARE</span><span class="mx">◆</span>
+    <span>MADE IN EGYPT</span><span class="mx">◆</span>
+  </div>
+</div>
+
+<!-- ══ COLLECTIONS / PRODUCTS ══ -->
+<section class="collections" id="collections">
+  <header class="sec-header js-reveal-group">
+    <p class="sec-eye">DROP 01</p>
+    <h2 class="sec-title">THE PIECES</h2>
+    <p class="sec-desc">Available as a signature full set or individual pieces. Independent sizing for hoodie &amp; pants.</p>
+  </header>
+
+  <div class="grid grid--3col">
+
+    <!-- PRODUCT 1: THE FULL SET -->
+    <article class="grid-card grid-card--featured js-card" data-product="fullset">
+      <div class="grid-card__badge">FULL SET</div>
+      <div class="grid-card__media">
+        <img src="images/product5.jpg" alt="SAQR Signature Full Set" loading="lazy"/>
+        <div class="grid-card__hover-img">
+          <img src="images/cargo_flatlay.jpg" alt="Cargo flat lay detail" loading="lazy"/>
+        </div>
+      </div>
+      <div class="grid-card__info">
+        <span class="grid-card__tag">HOODIE + CARGO PANTS</span>
+        <h3>THE SIGNATURE FULL SET</h3>
+        <p class="grid-card__desc">Complete outfit: Plush bouclé oversized hoodie combined with heavyweight tactical cargo pants.</p>
+        <div class="grid-card__bottom">
+          <p class="grid-card__price">2,100 EGP</p>
+          <span class="grid-card__sizes-hint">Choose Hoodie + Pants Sizes</span>
+        </div>
+      </div>
+      <button class="grid-card__btn" type="button" data-product="fullset" aria-label="Order Full Set">
+        ORDER FULL SET (2,100 EGP)
+      </button>
+    </article>
+
+    <!-- PRODUCT 2: THE HOODIE -->
+    <article class="grid-card js-card" data-product="hoodie">
+      <div class="grid-card__media">
+        <img src="images/hoodie_flatlay.jpg" alt="SAQR Oversized Hoodie" loading="lazy"/>
+        <div class="grid-card__hover-img">
+          <img src="images/product3.jpg" alt="Hoodie on model" loading="lazy"/>
+        </div>
+      </div>
+      <div class="grid-card__info">
+        <span class="grid-card__tag">INDIVIDUAL PIECE</span>
+        <h3>THE OVERSIZED HOODIE</h3>
+        <p class="grid-card__desc">Heavy plush bouclé texture, antique bronze zipper, structured double-layer hood &amp; relaxed drop-shoulder cut.</p>
+        <div class="grid-card__bottom">
+          <p class="grid-card__price">900 EGP</p>
+          <span class="grid-card__sizes-hint">Sizes S to XXL</span>
+        </div>
+      </div>
+      <button class="grid-card__btn" type="button" data-product="hoodie" aria-label="Order Hoodie">
+        ORDER HOODIE (900 EGP)
+      </button>
+    </article>
+
+    <!-- PRODUCT 3: THE CARGO -->
+    <article class="grid-card js-card" data-product="cargo">
+      <div class="grid-card__media">
+        <img src="images/cargo_flatlay.jpg" alt="SAQR Cargo Pants" loading="lazy"/>
+        <div class="grid-card__hover-img">
+          <img src="images/product1.jpg" alt="Cargo on model" loading="lazy"/>
+        </div>
+      </div>
+      <div class="grid-card__info">
+        <span class="grid-card__tag">INDIVIDUAL PIECE</span>
+        <h3>THE CARGO PANTS</h3>
+        <p class="grid-card__desc">Heavy bouclé cargo pants with hanging buckle straps, antique bronze hardware clips, and deep tactical utility pockets.</p>
+        <div class="grid-card__bottom">
+          <p class="grid-card__price">1,200 EGP</p>
+          <span class="grid-card__sizes-hint">Sizes S to XXL</span>
+        </div>
+      </div>
+      <button class="grid-card__btn" type="button" data-product="cargo" aria-label="Order Cargo Pants">
+        ORDER CARGO (1,200 EGP)
+      </button>
+    </article>
+
+  </div>
+</section>
+
+<!-- ══ LOOKBOOK / ANGLES ══ -->
+<section class="lookbook" id="lookbook">
+  <header class="sec-header js-reveal-group" style="margin-bottom:2.5rem;">
+    <p class="sec-eye">EDITORIAL ARCHIVE</p>
+    <h2 class="sec-title">LOOKBOOK</h2>
+    <p class="sec-desc">Different angles and styling perspectives from our Drop 01 studio shoot.</p>
+  </header>
+  <div class="lookbook__grid">
+    <div class="lookbook__item js-reveal">
+      <img src="images/product4.png" alt="Duo Back to Back styling" loading="lazy"/>
+      <div class="lookbook__caption"><span>ANGLE 01</span> // BACK TO BACK DUO</div>
+    </div>
+    <div class="lookbook__item js-reveal" style="--d:0.1s">
+      <img src="images/product2.jpg" alt="Studio Fit details" loading="lazy"/>
+      <div class="lookbook__caption"><span>ANGLE 02</span> // STUDIO CONTRAST</div>
+    </div>
+    <div class="lookbook__item js-reveal" style="--d:0.2s">
+      <img src="images/product1.jpg" alt="Dark Silhouette" loading="lazy"/>
+      <div class="lookbook__caption"><span>ANGLE 03</span> // DARK TEXTURE &amp; FIT</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EDITORIAL BANNER ══ -->
+<section class="editorial js-reveal">
+  <img src="images/product6.jpg" alt="SAQR Magazine Editorial" class="editorial__img" loading="lazy"/>
+  <div class="editorial__overlay">
+    <p>EDITORIAL ARCHIVE</p>
+    <h2>SAME MINDSET<br/>DIFFERENT ANGLES</h2>
+    <a href="https://www.instagram.com/saqrwear_" target="_blank" rel="noopener noreferrer" class="editorial__link">
+      INSTAGRAM @SAQRWEAR_ →
+    </a>
+  </div>
+</section>
+
+<!-- ══ SIZE GUIDE SECTION ══ -->
+<section class="size-guide-sec" id="size-guide">
+  <header class="sec-header js-reveal-group" style="text-align:center; margin-bottom:3rem;">
+    <p class="sec-eye">FIT &amp; MEASUREMENTS</p>
+    <h2 class="sec-title">SIZE GUIDE</h2>
+    <p class="sec-desc" style="margin:0 auto;">All measurements are in centimeters (cm). Engineered for a modern relaxed streetwear drape.</p>
+  </header>
+
+  <div class="sg-grid js-reveal">
+    <!-- Card 1: Hoodie -->
+    <div class="sg-card">
+      <div class="sg-card__header">
+        <span class="sg-card__icon">👕</span>
+        <h3>OVERSIZED HOODIE</h3>
+      </div>
+      <table class="size-table">
+        <thead>
+          <tr><th>Size</th><th>Chest (cm)</th><th>Length (cm)</th><th>Weight (kg)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>S</strong></td><td>58</td><td>70</td><td>55 - 68 kg</td></tr>
+          <tr><td><strong>M</strong></td><td>61</td><td>72</td><td>68 - 78 kg</td></tr>
+          <tr><td><strong>L</strong></td><td>64</td><td>74</td><td>78 - 88 kg</td></tr>
+          <tr><td><strong>XL</strong></td><td>67</td><td>76</td><td>88 - 98 kg</td></tr>
+          <tr><td><strong>XXL</strong></td><td>70</td><td>78</td><td>98 - 110 kg</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Card 2: Cargo -->
+    <div class="sg-card">
+      <div class="sg-card__header">
+        <span class="sg-card__icon">👖</span>
+        <h3>CARGO PANTS</h3>
+      </div>
+      <table class="size-table">
+        <thead>
+          <tr><th>Size</th><th>Waist (cm)</th><th>Length (cm)</th><th>Weight (kg)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>S</strong></td><td>74 - 80</td><td>102</td><td>55 - 68 kg</td></tr>
+          <tr><td><strong>M</strong></td><td>80 - 86</td><td>104</td><td>68 - 78 kg</td></tr>
+          <tr><td><strong>L</strong></td><td>86 - 92</td><td>106</td><td>78 - 88 kg</td></tr>
+          <tr><td><strong>XL</strong></td><td>92 - 98</td><td>108</td><td>88 - 98 kg</td></tr>
+          <tr><td><strong>XXL</strong></td><td>98 - 105</td><td>110</td><td>98 - 110 kg</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="story" id="about">
+  <div class="story__grid">
+    <div class="story__imgs js-reveal-group">
+      <img src="images/product4.png" alt="SAQR Silhouette" class="story__img story__img--main" loading="lazy"/>
+      <img src="images/product1.jpg" alt="SAQR Details" class="story__img story__img--accent" loading="lazy"/>
+    </div>
+    <div class="story__text js-reveal-group">
+      <p class="sec-eye">THE BRAND</p>
+      <h2 class="sec-title">SAQR®</h2>
+      <p>Independent dark streetwear label from Cairo, Egypt. Established in 2026.</p>
+      <p>Same mindset, different angles. Built around distinct silhouettes, oversized cuts, and modern streetwear aesthetic.</p>
+      <div class="story__tags">
+        <span>CAIRO</span>
+        <span>DROP 01</span>
+        <span>STREETWEAR</span>
+        <span>EST. 2026</span>
+      </div>
+      <a href="https://www.instagram.com/saqrwear_" target="_blank" rel="noopener noreferrer" class="btn-outline">
+        INSTAGRAM @SAQRWEAR_ ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURES STRIP ══ -->
+<div class="feats">
+  <div class="feat js-reveal"><span class="feat__icon">◈</span><h4>DARK AESTHETIC</h4><p>Custom oversized streetwear cuts</p></div>
+  <div class="feat js-reveal" style="--d:0.1s"><span class="feat__icon">◈</span><h4>LOCAL IDENTITY</h4><p>Designed and crafted in Cairo</p></div>
+  <div class="feat js-reveal" style="--d:0.2s"><span class="feat__icon">◈</span><h4>FAST DELIVERY</h4><p>Shipped across Egypt &amp; Worldwide</p></div>
+  <div class="feat js-reveal" style="--d:0.3s"><span class="feat__icon">◈</span><h4>EASY RETURNS</h4><p>14-day exchange &amp; return policy</p></div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<section class="contact" id="contact">
+  <div class="contact__inner">
+    <div class="contact__info js-reveal-group">
+      <p class="sec-eye">DIRECT ORDER &amp; INQUIRIES</p>
+      <h2 class="sec-title">CONTACT</h2>
+      <div class="contact__channels">
+        <a href="https://www.instagram.com/saqrwear_" target="_blank" rel="noopener noreferrer" class="channel">
+          <span class="channel__label">INSTAGRAM</span>
+          <span class="channel__val">@saqrwear_</span>
+        </a>
+        <a href="https://wa.me/201143757832" target="_blank" rel="noopener noreferrer" class="channel">
+          <span class="channel__label">WHATSAPP</span>
+          <span class="channel__val">Direct Order / Chat (+20 114 375 7832)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer__top">
+    <img src="images/logo.jpg" alt="SAQR® Logo" class="footer__logo" loading="lazy"/>
+    <p>WEAR THE LEGACY</p>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 SAQR® ALL RIGHTS RESERVED</span>
+    <span>CAIRO, EGYPT 🇪🇬</span>
+  </div>
+</footer>
+
+<!-- ══ 2-STEP INTERACTIVE CHECKOUT MODAL ══ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Product Order" hidden>
+  <div class="modal__backdrop" id="modalBackdrop"></div>
+  <div class="modal__panel">
+
+    <!-- Step indicator -->
+    <div class="modal__steps">
+      <div class="step-dot active" data-step="1">1</div>
+      <div class="step-line"></div>
+      <div class="step-dot" data-step="2">2</div>
+    </div>
+    <button class="modal__close" id="modalClose" type="button" aria-label="Close modal">✕</button>
+
+    <!-- STEP 1: Product details + Size selection + Size chart -->
+    <div class="modal__step" id="step1">
+      <div class="modal__media" id="modalMedia"></div>
+      <div class="modal__details">
+        <p class="modal__tag" id="modalTag"></p>
+        <h2 class="modal__title" id="modalTitle"></h2>
+        <p class="modal__desc" id="modalDesc"></p>
+        <p class="modal__price" id="modalPrice"></p>
+
+        <!-- Size Chart Drawer -->
+        <div class="size-chart-wrap">
+          <button type="button" class="size-chart-toggle open" id="sizeChartToggle" aria-expanded="true">
+            <span>📏 SIZE CHART / MEASUREMENTS (CM)</span>
+            <span class="toggle-arrow">↓</span>
+          </button>
+          <div class="size-chart-drawer" id="sizeChartDrawer">
+            <div class="size-chart-tabs">
+              <button type="button" class="sc-tab active" data-tab="sc-hoodie">HOODIE</button>
+              <button type="button" class="sc-tab" data-tab="sc-cargo">CARGO PANTS</button>
+            </div>
+            <!-- Hoodie Table -->
+            <div class="sc-table-wrap" id="sc-hoodie">
+              <table class="size-table">
+                <thead>
+                  <tr>
+                    <th>Size</th>
+                    <th>Chest</th>
+                    <th>Length</th>
+                    <th>Weight</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>S</td><td>58 cm</td><td>70 cm</td><td>55 - 68 kg</td></tr>
+                  <tr><td>M</td><td>61 cm</td><td>72 cm</td><td>68 - 78 kg</td></tr>
+                  <tr><td>L</td><td>64 cm</td><td>74 cm</td><td>78 - 88 kg</td></tr>
+                  <tr><td>XL</td><td>67 cm</td><td>76 cm</td><td>88 - 98 kg</td></tr>
+                  <tr><td>XXL</td><td>70 cm</td><td>78 cm</td><td>98 - 110 kg</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- Cargo Table -->
+            <div class="sc-table-wrap" id="sc-cargo" hidden>
+              <table class="size-table">
+                <thead>
+                  <tr>
+                    <th>Size</th>
+                    <th>Waist</th>
+                    <th>Length</th>
+                    <th>Weight</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>S</td><td>74 - 80 cm</td><td>102 cm</td><td>55 - 68 kg</td></tr>
+                  <tr><td>M</td><td>80 - 86 cm</td><td>104 cm</td><td>68 - 78 kg</td></tr>
+                  <tr><td>L</td><td>86 - 92 cm</td><td>106 cm</td><td>78 - 88 kg</td></tr>
+                  <tr><td>XL</td><td>92 - 98 cm</td><td>108 cm</td><td>88 - 98 kg</td></tr>
+                  <tr><td>XXL</td><td>98 - 105 cm</td><td>110 cm</td><td>98 - 110 kg</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Size Pickers -->
+        <div id="sizeContainer"></div>
+
+        <div class="modal__field">
+          <label class="field-label">Quantity</label>
+          <div class="qty-ctrl">
+            <button class="qty-btn" id="qtyMinus" type="button" aria-label="Decrease quantity">−</button>
+            <span class="qty-val" id="qtyVal">1</span>
+            <button class="qty-btn" id="qtyPlus" type="button" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+
+        <button class="btn-next" id="btnNext" type="button">
+          <span>CONTINUE TO SHIPPING</span>
+          <svg viewBox="0 0 40 12" fill="none" width="40" height="12"><path d="M0 6h38M32 1l6 5-6 5" stroke="currentColor" stroke-width="1.2"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Shipping details + Payment + WhatsApp Sender -->
+    <div class="modal__step" id="step2" hidden>
+      <div class="modal__order-summary" id="orderSummary"></div>
+      <div class="modal__form">
+        <h3 class="modal__form-title">Shipping &amp; Payment</h3>
+        <div class="form-field">
+          <label for="oName">Full Name *</label>
+          <input type="text" id="oName" placeholder="Your full name" autocomplete="name" maxlength="60" required/>
+        </div>
+        <div class="form-field">
+          <label for="oPhone">Phone Number *</label>
+          <input type="tel" id="oPhone" placeholder="e.g. 01XXXXXXXXX" autocomplete="tel" maxlength="20" required/>
+        </div>
+        <div class="form-field">
+          <label for="oAddress">Delivery Address &amp; City *</label>
+          <input type="text" id="oAddress" placeholder="e.g. Cairo, Nasr City, Street 10" autocomplete="street-address" maxlength="150" required/>
+        </div>
+
+        <div class="form-field">
+          <label class="field-label" style="margin-bottom:0.6rem;">Payment Method *</label>
+          <div class="pay-methods">
+            <button type="button" class="pay-btn active" data-pay="Cash on Delivery">
+              <span class="pay-icon">💵</span>
+              <span class="pay-text">Cash on Delivery</span>
+            </button>
+            <button type="button" class="pay-btn" data-pay="InstaPay">
+              <span class="pay-icon">⚡</span>
+              <span class="pay-text">InstaPay</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- InstaPay Details Box -->
+        <div class="instapay-box" id="instapayBox" hidden>
+          <div class="instapay-header">
+            <span class="instapay-badge">INSTAPAY TRANSFER</span>
+            <span class="instapay-acc">01094402501</span>
+          </div>
+          <p class="instapay-note">Transfer the total amount to <strong>01094402501</strong> on InstaPay, then send order via WhatsApp.</p>
+          <button type="button" class="instapay-copy-btn" id="copyInstapayBtn">
+            📋 Copy Number (01094402501)
+          </button>
+        </div>
+
+        <div class="modal__actions">
+          <button class="btn-back" id="btnBack" type="button">← BACK</button>
+          <button class="btn-send" id="btnSend" type="button">
+            <span>SEND TO SAQR VIA WHATSAPP</span>
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </button>
+        </div>
+        <p class="modal__note">Instant confirmation via WhatsApp with final delivery details.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   SAQR® — Main JavaScript Logic (Security Hardened v2)
+   WhatsApp: 201143757832 | InstaPay: 01094402501
+   ═══════════════════════════════════════════════════════════════ */
+
+const PRODUCTS = {
+  fullset: {
+    id: 'fullset',
+    type: 'set',
+    tag: 'FULL SET',
+    title: 'THE SIGNATURE FULL SET',
+    price: 2100,
+    desc: 'Heavyweight plush boucle oversized hoodie paired with matching strap-system cargo pants. Custom bronze metal clips and hardware. Select hoodie and pants sizes independently.',
+    modelImg: 'images/product5.jpg',
+    flatImg: 'images/cargo_flatlay.jpg'
+  },
+  hoodie: {
+    id: 'hoodie',
+    type: 'hoodie',
+    tag: 'INDIVIDUAL PIECE',
+    title: 'THE OVERSIZED HOODIE',
+    price: 900,
+    desc: 'Heavy plush boucle texture, front bronze zipper, relaxed drop-shoulder cut with structured double-layer hood.',
+    modelImg: 'images/product3.jpg',
+    flatImg: 'images/hoodie_flatlay.jpg'
+  },
+  cargo: {
+    id: 'cargo',
+    type: 'cargo',
+    tag: 'INDIVIDUAL PIECE',
+    title: 'THE CARGO PANTS',
+    price: 1200,
+    desc: 'Heavyweight boucle tactical cargo pants with hanging buckle straps, antique bronze clips, chain accents, and deep side cargo pockets.',
+    modelImg: 'images/product1.jpg',
+    flatImg: 'images/cargo_flatlay.jpg'
+  }
+};
+
+let currentOrder = {
+  product: null,
+  hoodieSize: 'L',
+  pantsSize: 'L',
+  qty: 1,
+  paymentMethod: 'Cash on Delivery',
+  activeView: 'model'
+};
+
+const SIZES = ['S', 'M', 'L', 'XL', 'XXL'];
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initLoader();
+  initCursor();
+  initNavbar();
+  initScrollReveals();
+  initModal();
+});
+
+/* ── 0. THEME ── */
+function initTheme() {
+  const themeToggle = document.getElementById('themeToggle');
+  const metaThemeColor = document.getElementById('metaThemeColor');
+  let savedTheme = 'light';
+  try { savedTheme = localStorage.getItem('saqr_theme') || 'light'; } catch(e) {}
+  applyTheme(savedTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = (currentTheme === 'light') ? 'dark' : 'light';
+      applyTheme(newTheme);
+      try { localStorage.setItem('saqr_theme', newTheme); } catch(e) {}
+    });
+  }
+
+  function applyTheme(theme) {
+    // Whitelist: only allow 'light' or 'dark' — nothing else
+    const safeTheme = (theme === 'dark') ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', safeTheme);
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', safeTheme === 'dark' ? '#060606' : '#fbfbfb');
+    }
+    if (themeToggle) {
+      if (safeTheme === 'dark') {
+        themeToggle.innerHTML = '<span class="theme-icon">\u2600\uFE0F</span><span class="theme-label">LIGHT</span>';
+      } else {
+        themeToggle.innerHTML = '<span class="theme-icon">\uD83C\uDF19</span><span class="theme-label">DARK</span>';
+      }
+    }
+  }
+}
+
+/* ── 1. LOADER ── */
+function initLoader() {
+  const loader = document.getElementById('loader');
+  const fill = document.getElementById('loaderFill');
+  const text = document.getElementById('loaderText');
+  if (!loader || !fill || !text) return;
+
+  let p = 0;
+  const interval = setInterval(() => {
+    p += Math.floor(Math.random() * 25) + 18;
+    if (p >= 100) {
+      p = 100;
+      clearInterval(interval);
+      fill.style.width = '100%';
+      text.textContent = 'READY 100%';
+      setTimeout(() => { loader.classList.add('hide'); }, 250);
+    } else {
+      fill.style.width = p + '%';
+      text.textContent = 'LOADING ' + p + '%';
+    }
+  }, 25);
+}
+
+/* ── 2. CURSOR ── */
+function initCursor() {
+  if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+  const cursor = document.getElementById('cursor');
+  const trail = document.getElementById('cursorTrail');
+  if (!cursor || !trail) return;
+
+  let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+  let trailX = mouseX, trailY = mouseY;
+  let rafRunning = false;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+    if (!rafRunning) { rafRunning = true; requestAnimationFrame(animateTrail); }
+  }, { passive: true });
+
+  function animateTrail() {
+    trailX += (mouseX - trailX) * 0.18;
+    trailY += (mouseY - trailY) * 0.18;
+    trail.style.left = trailX + 'px';
+    trail.style.top = trailY + 'px';
+    if (Math.abs(mouseX - trailX) > 0.1 || Math.abs(mouseY - trailY) > 0.1) {
+      requestAnimationFrame(animateTrail);
+    } else { rafRunning = false; }
+  }
+
+  document.querySelectorAll('a, button, .grid-card, .lookbook__item').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      trail.style.width = '50px'; trail.style.height = '50px';
+      trail.style.borderColor = 'rgba(180,180,180,0.8)';
+    });
+    el.addEventListener('mouseleave', () => {
+      trail.style.width = '32px'; trail.style.height = '32px';
+      trail.style.borderColor = 'rgba(150,150,150,0.4)';
+    });
+  });
+}
+
+/* ── 3. NAVBAR & MOBILE MENU ── */
+function initNavbar() {
+  const navbar = document.getElementById('navbar');
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileLinks = document.querySelectorAll('.mobile-menu__link, .nav-link-item');
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      mobileMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+}
+
+/* ── 4. SCROLL REVEALS ── */
+function initScrollReveals() {
+  const reveals = document.querySelectorAll('.js-reveal, .js-reveal-group');
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+}
+
+/* ── 5. PRODUCT MODAL & CHECKOUT ── */
+function initModal() {
+  const modal = document.getElementById('modal');
+  const backdrop = document.getElementById('modalBackdrop');
+  const closeBtn = document.getElementById('modalClose');
+  const step1 = document.getElementById('step1');
+  const step2 = document.getElementById('step2');
+  const stepDots = document.querySelectorAll('.step-dot');
+
+  const modalMedia = document.getElementById('modalMedia');
+  const modalTag = document.getElementById('modalTag');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDesc');
+  const modalPrice = document.getElementById('modalPrice');
+  const sizeContainer = document.getElementById('sizeContainer');
+  const qtyVal = document.getElementById('qtyVal');
+  const qtyMinus = document.getElementById('qtyMinus');
+  const qtyPlus = document.getElementById('qtyPlus');
+
+  const sizeChartToggle = document.getElementById('sizeChartToggle');
+  const sizeChartDrawer = document.getElementById('sizeChartDrawer');
+  const scTabs = document.querySelectorAll('.sc-tab');
+  const scHoodie = document.getElementById('sc-hoodie');
+  const scCargo = document.getElementById('sc-cargo');
+
+  const payButtons = document.querySelectorAll('.pay-btn');
+  const instapayBox = document.getElementById('instapayBox');
+  const copyInstapayBtn = document.getElementById('copyInstapayBtn');
+
+  const btnNext = document.getElementById('btnNext');
+  const btnBack = document.getElementById('btnBack');
+  const btnSend = document.getElementById('btnSend');
+  const orderSummary = document.getElementById('orderSummary');
+
+  // Open modal from product cards
+  document.querySelectorAll('.js-card, .grid-card__btn').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const card = trigger.closest('.js-card');
+      const prodKey = trigger.dataset.product || (card ? card.dataset.product : 'fullset');
+      openModal(prodKey);
+    });
+  });
+
+  function openModal(prodKey) {
+    // SECURITY FIX 1: Whitelist-only product key — blocks prototype pollution attacks
+    const validKey = (typeof prodKey === 'string' && Object.prototype.hasOwnProperty.call(PRODUCTS, prodKey))
+      ? prodKey
+      : 'fullset';
+    const prod = PRODUCTS[validKey];
+
+    currentOrder.product = prod;
+    currentOrder.hoodieSize = 'L';
+    currentOrder.pantsSize = 'L';
+    currentOrder.qty = 1;
+    currentOrder.paymentMethod = 'Cash on Delivery';
+    currentOrder.activeView = 'model';
+
+    // Use textContent — never innerHTML — for product data (XSS-safe)
+    modalTag.textContent = prod.tag;
+    modalTitle.textContent = prod.title;
+    modalDesc.textContent = prod.desc;
+    modalPrice.textContent = prod.price.toLocaleString() + ' EGP';
+    qtyVal.textContent = '1';
+
+    if (sizeChartDrawer && sizeChartToggle) {
+      sizeChartDrawer.hidden = false;
+      sizeChartToggle.classList.add('open');
+      sizeChartToggle.setAttribute('aria-expanded', 'true');
+
+      if (prod.type === 'cargo') {
+        scTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === 'sc-cargo'));
+        if (scHoodie) scHoodie.hidden = true;
+        if (scCargo) scCargo.hidden = false;
+      } else {
+        scTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === 'sc-hoodie'));
+        if (scHoodie) scHoodie.hidden = false;
+        if (scCargo) scCargo.hidden = true;
+      }
+    }
+
+    payButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.pay === 'Cash on Delivery'));
+    if (instapayBox) instapayBox.hidden = true;
+
+    renderSizePickers();
+    renderModalMedia();
+    goToStep(1);
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Size Chart Toggle
+  if (sizeChartToggle && sizeChartDrawer) {
+    sizeChartToggle.addEventListener('click', () => {
+      const isHidden = sizeChartDrawer.hidden;
+      sizeChartDrawer.hidden = !isHidden;
+      sizeChartToggle.classList.toggle('open', !isHidden);
+      sizeChartToggle.setAttribute('aria-expanded', !isHidden ? 'true' : 'false');
+    });
+  }
+
+  scTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      scTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.tab;
+      if (scHoodie) scHoodie.hidden = (target !== 'sc-hoodie');
+      if (scCargo) scCargo.hidden = (target !== 'sc-cargo');
+    });
+  });
+
+  // Payment Selection
+  payButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      payButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentOrder.paymentMethod = btn.dataset.pay;
+      if (instapayBox) instapayBox.hidden = (currentOrder.paymentMethod !== 'InstaPay');
+      renderOrderSummary();
+    });
+  });
+
+  // Copy InstaPay Number (with in-app browser fallback)
+  if (copyInstapayBtn) {
+    copyInstapayBtn.addEventListener('click', () => {
+      const num = '01094402501';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(num).then(showCopied).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+
+      function fallbackCopy() {
+        const temp = document.createElement('textarea');
+        temp.value = num;
+        temp.style.position = 'fixed';
+        temp.style.opacity = '0';
+        document.body.appendChild(temp);
+        temp.focus();
+        temp.select();
+        try { document.execCommand('copy'); showCopied(); } catch(e) { alert('InstaPay Number: ' + num); }
+        document.body.removeChild(temp);
+      }
+
+      function showCopied() {
+        copyInstapayBtn.textContent = '\u2713 Copied (01094402501)';
+        setTimeout(() => { copyInstapayBtn.textContent = '\uD83D\uDCCB Copy Number (01094402501)'; }, 2500);
+      }
+    });
+  }
+
+  function renderSizePickers() {
+    sizeContainer.innerHTML = '';
+    const type = currentOrder.product.type;
+
+    function makeSizeGroup(titleText, currentSize, onSelect) {
+      const group = document.createElement('div');
+      group.className = 'size-group';
+      const titleEl = document.createElement('div');
+      titleEl.className = 'size-group__title';
+      titleEl.textContent = titleText;
+      group.appendChild(titleEl);
+      const grid = document.createElement('div');
+      grid.className = 'size-grid';
+      SIZES.forEach(s => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'size-btn' + (s === currentSize ? ' active' : '');
+        btn.dataset.size = s;
+        btn.textContent = s;
+        btn.addEventListener('click', () => {
+          grid.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          onSelect(s);
+        });
+        grid.appendChild(btn);
+      });
+      group.appendChild(grid);
+      return group;
+    }
+
+    if (type === 'set') {
+      sizeContainer.appendChild(makeSizeGroup('1. Select Hoodie Size', currentOrder.hoodieSize, s => { currentOrder.hoodieSize = s; }));
+      sizeContainer.appendChild(makeSizeGroup('2. Select Cargo Pants Size', currentOrder.pantsSize, s => { currentOrder.pantsSize = s; }));
+    } else if (type === 'hoodie') {
+      sizeContainer.appendChild(makeSizeGroup('Select Hoodie Size', currentOrder.hoodieSize, s => { currentOrder.hoodieSize = s; }));
+    } else if (type === 'cargo') {
+      sizeContainer.appendChild(makeSizeGroup('Select Cargo Size', currentOrder.pantsSize, s => { currentOrder.pantsSize = s; }));
+    }
+  }
+
+  function renderModalMedia() {
+    const imgSrc = currentOrder.activeView === 'model'
+      ? currentOrder.product.modelImg
+      : currentOrder.product.flatImg;
+
+    // Build DOM safely instead of innerHTML with user data
+    modalMedia.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    img.alt = currentOrder.product.title;
+    img.id = 'modalMainImg';
+    modalMedia.appendChild(img);
+
+    const switcher = document.createElement('div');
+    switcher.className = 'modal__view-switcher';
+    ['model', 'flat'].forEach(view => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'modal__view-btn' + (currentOrder.activeView === view ? ' active' : '');
+      btn.dataset.view = view;
+      btn.textContent = view === 'model' ? 'ON MODEL' : 'FLAT LAY';
+      btn.addEventListener('click', () => { currentOrder.activeView = view; renderModalMedia(); });
+      switcher.appendChild(btn);
+    });
+    modalMedia.appendChild(switcher);
+  }
+
+  function closeModal() {
+    modal.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+  }
+
+  backdrop.addEventListener('click', closeModal);
+  closeBtn.addEventListener('click', closeModal);
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal();
+  });
+
+  qtyMinus.addEventListener('click', () => {
+    if (currentOrder.qty > 1) { currentOrder.qty--; qtyVal.textContent = currentOrder.qty; }
+  });
+  qtyPlus.addEventListener('click', () => {
+    if (currentOrder.qty < 10) { currentOrder.qty++; qtyVal.textContent = currentOrder.qty; }
+  });
+
+  function goToStep(stepNum) {
+    if (stepNum === 1) {
+      step1.removeAttribute('hidden');
+      step2.setAttribute('hidden', '');
+      stepDots[0].classList.add('active');
+      stepDots[1].classList.remove('active');
+    } else {
+      step1.setAttribute('hidden', '');
+      step2.removeAttribute('hidden');
+      stepDots[0].classList.remove('active');
+      stepDots[1].classList.add('active');
+      renderOrderSummary();
+    }
+  }
+
+  function renderOrderSummary() {
+    const total = currentOrder.product.price * currentOrder.qty;
+    const type = currentOrder.product.type;
+
+    // Build summary DOM safely — all values from PRODUCTS (trusted) or validated user data
+    orderSummary.innerHTML = '';
+
+    function addRow(label, value, isTotal) {
+      const row = document.createElement('div');
+      row.className = 'summary-item' + (isTotal ? ' total' : '');
+      const labelEl = document.createElement('span');
+      labelEl.textContent = label;
+      const valueEl = document.createElement(isTotal ? 'span' : 'strong');
+      if (!isTotal) valueEl.style.color = 'var(--text-main)';
+      valueEl.textContent = value;
+      row.appendChild(labelEl);
+      row.appendChild(valueEl);
+      return row;
+    }
+
+    const title = document.createElement('h3');
+    title.style.cssText = 'font-size:1.1rem;font-weight:700;margin-bottom:0.8rem;color:var(--text-main);';
+    title.textContent = 'Order Summary';
+    orderSummary.appendChild(title);
+
+    orderSummary.appendChild(addRow('Item:', currentOrder.product.title));
+
+    if (type === 'set') {
+      orderSummary.appendChild(addRow('Hoodie Size:', currentOrder.hoodieSize));
+      orderSummary.appendChild(addRow('Cargo Pants Size:', currentOrder.pantsSize));
+    } else if (type === 'hoodie') {
+      orderSummary.appendChild(addRow('Hoodie Size:', currentOrder.hoodieSize));
+    } else if (type === 'cargo') {
+      orderSummary.appendChild(addRow('Cargo Pants Size:', currentOrder.pantsSize));
+    }
+
+    orderSummary.appendChild(addRow('Quantity:', String(currentOrder.qty)));
+    orderSummary.appendChild(addRow('Payment:', currentOrder.paymentMethod));
+    orderSummary.appendChild(addRow('Unit Price:', currentOrder.product.price.toLocaleString() + ' EGP'));
+    orderSummary.appendChild(addRow('Total:', total.toLocaleString() + ' EGP', true));
+  }
+
+  btnNext.addEventListener('click', () => goToStep(2));
+  btnBack.addEventListener('click', () => goToStep(1));
+
+  // ─────────────────────────────────────────────────────────────────
+  // SEND ORDER — Security Hardened
+  // Fix 1: Prototype Pollution blocked in openModal above
+  // Fix 2: Egyptian phone validation + strong input sanitization
+  // Fix 3: Send cooldown — prevents duplicate orders / spam
+  // ─────────────────────────────────────────────────────────────────
+  let sendCooldown = false;
+
+  btnSend.addEventListener('click', () => {
+    // SECURITY FIX 3: Rate limit — prevent duplicate sends
+    if (sendCooldown) {
+      alert('Please wait a moment before sending again.');
+      return;
+    }
+
+    const rawName    = document.getElementById('oName').value.trim();
+    const rawPhone   = document.getElementById('oPhone').value.trim();
+    const rawAddress = document.getElementById('oAddress').value.trim();
+
+    // SECURITY FIX 2: Strict sanitization
+    // Name: remove HTML/script characters, max 60 chars
+    const name    = rawName.replace(/[<>{}[\]\\^`|"']/g, '').slice(0, 60);
+    // Phone: keep digits, +, -, space only; max 20 chars
+    const phone   = rawPhone.replace(/[^0-9+\- ]/g, '').slice(0, 20);
+    // Address: remove HTML/script characters, max 150 chars
+    const address = rawAddress.replace(/[<>{}[\]\\^`|"']/g, '').slice(0, 150);
+
+    if (!name || !phone || !address) {
+      alert('Please fill in your name, phone number, and delivery address.');
+      return;
+    }
+
+    // SECURITY FIX 2: Egyptian phone number must be exactly 11 digits starting with 01
+    const phoneDigits = phone.replace(/[\s\-+]/g, '');
+    if (!/^01[0-9]{9}$/.test(phoneDigits)) {
+      alert('Please enter a valid Egyptian phone number.\nFormat: 01XXXXXXXXX (11 digits, e.g. 01012345678)');
+      return;
+    }
+
+    // SECURITY FIX 2: Name must contain at least one Arabic or English letter
+    if (!/[a-zA-Z\u0600-\u06FF]/.test(name)) {
+      alert('Please enter your real name (must contain letters).');
+      return;
+    }
+
+    const total = currentOrder.product.price * currentOrder.qty;
+    const type  = currentOrder.product.type;
+
+    let sizeInfo = '';
+    if (type === 'set')    sizeInfo = 'Hoodie: ' + currentOrder.hoodieSize + ' | Pants: ' + currentOrder.pantsSize;
+    else if (type === 'hoodie') sizeInfo = 'Hoodie: ' + currentOrder.hoodieSize;
+    else if (type === 'cargo')  sizeInfo = 'Pants: '  + currentOrder.pantsSize;
+
+    let payNote = 'Cash on Delivery (COD)';
+    let receiptNote = '';
+    if (currentOrder.paymentMethod === 'InstaPay') {
+      payNote = 'InstaPay (Transferred to 01094402501)';
+      receiptNote = '\n----------------------------------\n[Attaching InstaPay Transfer Receipt]';
+    }
+
+    const lines = [
+      'SAQR\u00AE New Order:',
+      '----------------------------------',
+      '\u2022 Item: ' + currentOrder.product.title + ' (' + currentOrder.qty + 'x)',
+      '\u2022 Size: ' + sizeInfo,
+      '\u2022 Address: ' + address,
+      '\u2022 Payment: ' + payNote,
+      '\u2022 Total: ' + total.toLocaleString() + ' EGP',
+      '----------------------------------',
+      '\u2022 Customer: ' + name,
+      '\u2022 Phone: ' + phoneDigits + receiptNote,
+      '----------------------------------',
+      'Ready for confirmation & dispatch.'
+    ];
+    const msg = lines.join('\n');
+
+    // All user data goes through encodeURIComponent — safe from URL injection
+    const encoded = encodeURIComponent(msg);
+    window.open('https://wa.me/201143757832?text=' + encoded, '_blank', 'noopener,noreferrer');
+
+    // SECURITY FIX 3: Activate cooldown
+    sendCooldown = true;
+    btnSend.textContent = '\u2713 ORDER SENT — Opening WhatsApp...';
+    btnSend.disabled = true;
+
+    setTimeout(() => {
+      sendCooldown = false;
+      btnSend.disabled = false;
+      closeModal();
+      btnSend.innerHTML = '<span>SEND TO SAQR VIA WHATSAPP</span>'
+        + '<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">'
+        + '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>'
+        + '</svg>';
+    }, 5000);
+  });
+}
+
+</script>
+</body>
+</html>
